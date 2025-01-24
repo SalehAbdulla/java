@@ -1,0 +1,30 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="BooleanParameter" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="ClassReferencesSubclass" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="DeclareCollectionAsInterface" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoreLocalVariables" value="false" />
+      <option name="ignorePrivateMethodsAndFields" value="false" />
+    </inspection_tool>
+    <inspection_tool class="FeatureEnvy" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="InstanceofChain" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="InstanceofThis" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JvmLinesOfCodeInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="MagicNumber" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="MethodOnlyUsedFromInnerClass" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="ModuleWithTooFewClasses" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="limit" value="10" />
+    </inspection_tool>
+    <inspection_tool class="ModuleWithTooManyClasses" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="limit" value="100" />
+    </inspection_tool>
+    <inspection_tool class="OverlyStrongTypeCast" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PublicMethodNotExposedInInterface" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="QodanaKotlinSanity" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="RedundantNotNullExtensionReceiverOfInline" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="StaticMethodOnlyUsedInOneClass" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="TypeMayBeWeakened" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="UseOfConcreteClass" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>
