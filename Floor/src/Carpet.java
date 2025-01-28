@@ -1,5 +1,4 @@
-public class Carpet {
-
+public class Carpet{
     private double cost;
 
     public Carpet(double cost){
@@ -10,7 +9,10 @@ public class Carpet {
             this.cost = cost;
         }
     }
+
     public double getCost(){
         return cost;
     }
+
+
 }
