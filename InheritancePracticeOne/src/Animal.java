@@ -1,12 +1,11 @@
 public class Animal {
-
     private String type;
     private String size;
-    private double weight;
+    private Double weight;
 
     public Animal(){}
 
-    public Animal(String type, String size, double weight){
+    public Animal(String type, String size, Double weight){
         this.type = type;
         this.size = size;
         this.weight = weight;
@@ -15,18 +14,18 @@ public class Animal {
     @Override
     public String toString() {
         return "Animal{" +
-                "weight=" + weight +
+                "type='" + type + '\'' +
                 ", size='" + size + '\'' +
-                ", type='" + type + '\'' +
+                ", weight=" + weight +
                 '}';
     }
 
     public void move(String speed){
-        System.out.println(type + " moves " + speed);
+        System.out.println(type + " moving really " + speed + ".");
     }
 
     public void makeNoise(){
-        System.out.println(type + " makes some kind of noise");
+        System.out.println(type + " making some noise.");
     }
 
 }
