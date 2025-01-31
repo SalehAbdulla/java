@@ -1,11 +1,10 @@
 public class Animal{
 
-    protected String type;
+    protected String type; // Allowing access within the package
     private String size;
     private double weight;
 
     public Animal(){}
-
 
     public Animal(String type, String size, double weight){
         this.type = type;

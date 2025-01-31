@@ -1,20 +1,23 @@
 public class Main{
     public static void main(String[] args) {
-
         Animal animal = new Animal("Generic Animal", "Huge", 40);
         doAnimalStuff(animal, "slow");
 
         Dog dog = new Dog();
-        doAnimalStuff(dog, "Super Fast");
+        doAnimalStuff(dog, "fast");
 
-        Dog curlyDog = new Dog("Curly", 15);
-        doAnimalStuff(curlyDog, "slow");
+        Dog beautifulDog = new Dog("Beautiful dog", 15);
+        doAnimalStuff(beautifulDog, "fast");
 
-        Dog friendlyDog = new Dog("Friendly Dog", 20, "Nice ear", "Nice tail");
-        doAnimalStuff(friendlyDog, "somewhat fast");
+        Dog bigBoomDog = new Dog("Big boom Dog", 80.0, "curly ear", "straight ear shape ");
+        doAnimalStuff(bigBoomDog, "slow");
 
-        Dog wolf = new Dog("wolf", 40);
-        doAnimalStuff(wolf, "slow");
+        Dog wolfDog = new Dog("wolf", 40);
+        doAnimalStuff(wolfDog, "fast");
+
+        Fish goldFish = new Fish("Gold Fish", 0.25, 2, 3);
+        doAnimalStuff(goldFish, "fast");
+
     }
 
     public static void doAnimalStuff(Animal animal, String speed){
@@ -23,6 +26,5 @@ public class Main{
         System.out.println(animal);
         System.out.println("_ _ _ _");
     }
-
 
 }
