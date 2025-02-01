@@ -13,17 +13,31 @@ public class Main {
                 {0, 9, 0, 0, 0, 0, 0, 0, 8},
                 {0, 0, 9, 7, 0, 0, 0, 0, 5},
                 {0, 0, 0, 2, 0, 0, 0, 0, 0},
-                {0, 0, 7, 0, 4, 0, 2, 0, 3}
+                {0, 0, 7, 0, 4, 0, 2, 0, 3},
         };
     }
 
-    private static boolean isNumberInRow(int[][] board, int number, int row){
+
+
+
+    public static boolean isNumberInRow(int[][] board, int rowNumber, int number){
         for (int i = 0; i < GRID_SIZE; i++){
-            if (board[row][i] == number){
+            if (board[rowNumber][i] == number){
                 return true;
             }
         }
         return false;
     }
+
+    public static boolean isNumberInColumn(int[][] board, int columnNumber, int number){
+        for(int i = 0; i < GRID_SIZE; i++){
+            if (board[i][columnNumber] == number){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
 }
