@@ -3,17 +3,16 @@ public class Worker {
     private String birthDate;
     protected String endDate;
 
-    public Worker(){}
-
     public Worker(String name, String birthDate){
         this.name = name;
         this.birthDate = birthDate;
     }
 
     public int getAge(){
-        int userBirthDay = Integer.parseInt(birthDate.substring(6));
         int currentYear = 2025;
-        return currentYear - userBirthDay;
+        // assuming entry dd/mm/yyyy
+        int birthDateYear = Integer.parseInt(birthDate.substring(6));
+        return currentYear - birthDateYear;
     }
 
     public double collectPay(){

@@ -15,28 +15,46 @@ public class Main {
                 {0, 0, 0, 2, 0, 0, 0, 0, 0},
                 {0, 0, 7, 0, 4, 0, 2, 0, 3},
         };
+
+        System.out.println(board[1 - 1 %3][4 - 4 %3]); // [rows][columns]
     }
 
-
-
-
-    public static boolean isNumberInRow(int[][] board, int rowNumber, int number){
+    private static boolean isNumberInRow(int[][] board, int number, int row){
         for (int i = 0; i < GRID_SIZE; i++){
-            if (board[rowNumber][i] == number){
+            if (board[row][i] == number){
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean isNumberInColumn(int[][] board, int columnNumber, int number){
-        for(int i = 0; i < GRID_SIZE; i++){
-            if (board[i][columnNumber] == number){
+    private static boolean isNumberInColumn(int[][] board, int number, int column){
+        for (int i = 0; i < GRID_SIZE; i++){
+            if (board[i][column] == number){
                 return true;
             }
         }
         return false;
     }
+
+    private static boolean isNumberInBox(int[][] board, int number, int column, int row){
+        int localBoxRow = row - row % 3;
+        int localBoxColumn = column - column % 3;
+
+        for (int i = localBoxRow; i < localBoxRow + 3; i++){
+            for (int j = localBoxColumn; j < localBoxColumn + 3; j++){
+                if (board[i][j] == number){
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
+
+
+
+
 
 
 

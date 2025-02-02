@@ -2,12 +2,12 @@ public class Employee extends Worker {
 
     private long employeeId;
     private String hireDate;
-    private static int employeeNo;
+    protected static long employeeNo;
 
-    public Employee(String name, String birthdate, String hireDate){
-        super(name, birthdate);
-        this.employeeId = Employee.employeeNo++;
+    public Employee(String name, String birthDate, String hireDate){
+        super(name, birthDate);
         this.hireDate = hireDate;
+        this.employeeId = Employee.employeeNo++;
     }
 
     @Override
@@ -17,5 +17,4 @@ public class Employee extends Worker {
                 ", hireDate='" + hireDate + '\'' +
                 "} " + super.toString();
     }
-
 }

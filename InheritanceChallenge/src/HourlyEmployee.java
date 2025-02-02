@@ -1,4 +1,4 @@
-public class HourlyEmployee extends Employee{
+public class HourlyEmployee extends Employee {
 
     private double hourlyPayRate;
 
@@ -8,13 +8,12 @@ public class HourlyEmployee extends Employee{
     }
 
     @Override
-    public double collectPay(){
-        return 40 * hourlyPayRate;
+    public double collectPay() {
+        return hourlyPayRate * 40;
     }
 
     public double getDoublePay(){
-        return 2 * collectPay();
+        return collectPay() * 2;
     }
-
 
 }
