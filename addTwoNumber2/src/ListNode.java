@@ -1,9 +1,5 @@
 public class ListNode {
-    protected int val;
-    protected ListNode next;
-
-    public ListNode(int val){
-        this.val = val;
-        this.next = null;
-    }
+    int val;
+    ListNode next;
+    ListNode(int val) { this.val = val; this.next = null; }
 }
