@@ -79,5 +79,3 @@ class ComputerCase extends Product {
 
 }
 
-
-

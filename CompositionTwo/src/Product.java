@@ -50,7 +50,7 @@ class Motherboard extends Product {
     }
 
     public void loadProgram(String programName) {
-        System.out.println("program " + programName + " is running..");
+        System.out.println("Program " + programName + " is running..");
     }
 
 }

@@ -7,6 +7,7 @@ class Solution {
             StringBuilder currentSubString = new StringBuilder();
             for (int j = 0; j < s.length(); j++){
                 if (currentSubString.indexOf(String.valueOf(s.charAt(j))))
+
             }
         }
         return 1234;
