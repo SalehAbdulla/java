@@ -1,19 +1,21 @@
 public class Main {
     public static void main(String[] args) {
-//        Solution solution = new Solution();
-//        System.out.println(solution.lengthOfLongestSubstring("abcabcbb"));
 
-        String s = "abcdabcd";
+        String s = "abcdabcdf";
+        StringBuilder currentString = new StringBuilder();
+        int maxValue = 0;
 
         for (int i = 0; i < s.length(); i++){
-
-            System.out.println(i + "i");
             for (int j = i; j < s.length(); j++){
-                System.out.println(j + "j");
-
+                if (currentString.indexOf(String.valueOf(s.charAt(j))) != -1){
+                    break;
+                }
+                currentString.append(s.charAt(j));
             }
-
+            maxValue = Math.max(currentString.length(), maxValue);
         }
 
+        System.out.println(currentString);
+        System.out.println(maxValue);
     }
 }
