@@ -1,16 +1,19 @@
 class Solution {
-    public int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
 
         int maxLength = 0;
 
         for (int i = 0; i < s.length(); i++){
-            StringBuilder currentSubString = new StringBuilder();
-            for (int j = 0; j < s.length(); j++){
-                if (currentSubString.indexOf(String.valueOf(s.charAt(j))) != -1){
+            // StringBuilder inside the outer loop to reset the StringBuilder in each starting index i
+            StringBuilder currentString = new StringBuilder();
+            for (int j = i; j < s.length(); j++) {
+                // if not -1 then it's exist, else -1 then add it.
+                if (currentString.indexOf(String.valueOf(s.charAt(j))) != -1) {
                     break;
+                } else {
+                    currentString.append(s.charAt(j));
+                    maxLength = Math.max(maxLength, currentString.length());
                 }
-                currentSubString.append(s.charAt(j));
-                maxLength = Math.max(currentSubString.length(), maxLength);
             }
         }
         return maxLength;
