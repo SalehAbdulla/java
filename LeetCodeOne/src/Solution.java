@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class Solution {
 
-    public int[] twoSum(int[] nums, int target){
+    public static int[] twoSum(int[] nums, int target){
 
         Map<Integer, Integer> complements = new HashMap<>();
 
@@ -14,7 +14,7 @@ public class Solution {
             }
             complements.put(target - nums[i], i);
         }
-
+        //System.out.println(complements);
         return nums;
     }
 }
