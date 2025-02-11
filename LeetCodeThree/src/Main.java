@@ -3,20 +3,26 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        //System.out.println(SolutionOne.longestSubstring("abcabcbb"));
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        int solution = lengthOfLongestSubstring("abcabcbb");
+        System.out.println(solution);
     }
 
+    // Input: s = "abcabcbb"
+
     public static int lengthOfLongestSubstring(String s){
+
         int maxLength = 0;
         Map<Character, Integer> visitedChar = new HashMap<>();
-        for (int right = 0, left = 0; right < s.length(); right++){
-            char currentChar = s.charAt(right);
-            if (visitedChar.containsKey(currentChar) && visitedChar.get(currentChar) >= left) {
-                left = visitedChar.get(currentChar) + 1;
-            }
-            maxLength = Math.max(maxLength, right - left + 1);
-            visitedChar.put(currentChar, right);
+
+        for (int rightPointer = 0, leftPointer = 0; rightPointer < s.length(); rightPointer++){
+            char currentChar = s.charAt(rightPointer);
+            if (visitedChar.containsKey(currentChar) && visitedChar.get(currentChar) >= leftPointer) {
+                // This means we have a repeated character within the substring range.
+                leftPointer = visitedChar.get(currentChar) + 1;
+            };
+
+            maxLength = Math.max(maxLength, rightPointer - leftPointer + 1);
+            visitedChar.put(currentChar, rightPointer);
         }
         return maxLength;
     }
