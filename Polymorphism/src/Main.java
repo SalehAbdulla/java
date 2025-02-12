@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);
+
         while (true){
             System.out.println("Enter the movie type " +
                     "('C' for comedy, 'A' for adventure, 'S' for Science Fiction, E for exit ) : ");

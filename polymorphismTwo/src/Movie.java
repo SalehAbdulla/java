@@ -1,29 +1,27 @@
 public class Movie {
     private String title;
 
-    public Movie(String title){
+    public Movie(String title) {
         this.title = title;
     }
 
-    public void watchMovie(){
-        System.out.println(title + " is a " + this.getClass().getSimpleName() + " film.");
+    public void watchMovie() {
+        System.out.println(title + " is a " + this.getClass().getSimpleName());
     }
 
-    // Factory method in software programming design patterns
-    public static Movie getMovie(String movieType, String title){
-
-        return switch (movieType.toUpperCase().charAt(0)) {
-            case ('S') -> new ScienceFiction(title);
-            case ('A') -> new Adventure(title);
-            case ('C') -> new Comedy(title);
+    // Instance Factory
+    public static Movie getMovie(String title, String type){
+        return switch (type.toUpperCase().charAt(0)) {
+            case 'C' -> new Comedy(title);
+            case 'A' -> new Adventure(title);
+            case 'S' -> new ScienceFiction(title);
             default -> new Movie(title);
         };
     }
 }
 
-
 class Adventure extends Movie {
-    public Adventure(String title){
+    public Adventure(String title) {
         super(title);
     }
 
@@ -32,18 +30,18 @@ class Adventure extends Movie {
         super.watchMovie();
         System.out.printf(".. %s%n".repeat(3),
                 "Something Adventure happens",
-                "Something more Adventure happens",
+                "Something even more Adventure happens",
                 "Adventure ends");
     }
 
     public void watchAdventure(){
-        System.out.println("Watching an Adventure");
+        System.out.println("Watch ... An Adventure Movie");
     }
-
 }
 
+
 class Comedy extends Movie {
-    public Comedy(String title){
+    public Comedy(String title) {
         super(title);
     }
 
@@ -52,19 +50,17 @@ class Comedy extends Movie {
         super.watchMovie();
         System.out.printf(".. %s%n".repeat(3),
                 "Something Comedy happens",
-                "Something more Comedy happens",
+                "Something even more Comedy happens",
                 "Comedy ends");
     }
 
     public void watchComedy(){
-        System.out.println("Watching an Comedy");
+        System.out.println("Watch ... a Comedy Movie");
     }
-
 }
 
 class ScienceFiction extends Movie {
-
-    public ScienceFiction(String title){
+    public ScienceFiction(String title) {
         super(title);
     }
 
@@ -73,12 +69,12 @@ class ScienceFiction extends Movie {
         super.watchMovie();
         System.out.printf(".. %s%n".repeat(3),
                 "Something ScienceFiction happens",
-                "Something more ScienceFiction happens",
+                "Something even more ScienceFiction happens",
                 "ScienceFiction ends");
     }
 
     public void watchScienceFiction(){
-        System.out.println("Watching an ScienceFiction");
+        System.out.println("Watch ... a ScienceFiction Movie");
     }
 
 }

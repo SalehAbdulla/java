@@ -25,16 +25,22 @@ public class NextMain {
         var comedyMovieTwo = new Comedy("PK");
         comedyMovieTwo.watchMovie();
 
-        Object unknownObject = Movie.getMovie("C", "PK 2");
+        // Three ways for casting an objects
+
+        Object unknownObject = Movie.getMovie("A", "Adventure");
+
+
+            // Strategy one
         if (unknownObject.getClass().getSimpleName() == "Comedy"){
             Comedy c = (Comedy) unknownObject;
             c.watchComedy();
+            // Strategy Two
+        } else if (unknownObject instanceof Adventure) {
+            ((Adventure) unknownObject).watchAdventure();
+            // Strategy Three
+        } else if (unknownObject instanceof ScienceFiction syfy){
+            syfy.watchScienceFiction();
         }
-
-
-
-
-
 
     }
 }
