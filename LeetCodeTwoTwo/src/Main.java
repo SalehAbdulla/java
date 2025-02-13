@@ -11,8 +11,8 @@ public class Main {
         printNode(Solution.sumListNode(l1, l2));
     }
 
-    public static void printNode(ListNode node){
-        while (node != null){
+    public static void printNode(ListNode node) {
+        while (node != null) {
             System.out.print(node.val + " -> ");
             node = node.next;
         }
