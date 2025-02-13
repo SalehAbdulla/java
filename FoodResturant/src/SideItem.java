@@ -7,4 +7,5 @@ public class SideItem {
         this.fries = fries;
         this.extraCheese = extraCheese;
     }
+
 }
