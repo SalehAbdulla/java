@@ -1,25 +1,21 @@
 public class Item {
-    private String type; // drink or burger or another items
+    private String type;
     private String name;
+    private String size;
     private double price;
-    private String size = "MEDIUM"; // By default medium
-
 
     public Item(String type, String name, double price){
         this.type = type.toUpperCase();
         this.name = name.toUpperCase();
+        this.size = "MEDIUM";
         this.price = price;
     }
 
-    public String getType(){
-
-        return type;
+    public void setSize(String size){
+        this.size = size;
     }
 
     public String getName(){
-        if (type.equals("SIDE") || type.equals("DRINK")) {
-            return size + " " + name;
-        }
         return name;
     }
 
@@ -28,22 +24,20 @@ public class Item {
     }
 
     public double getAdjustedPrice(){
-        return switch (size) {
+        return switch(size){
             case "SMALL" -> getBasePrice() - 0.5;
             case "LARGE" -> getBasePrice() + 1;
             default -> getBasePrice();
         };
     }
 
-    public void setSize(String size){
-        this.size = size;
-    }
-
     public static void printItem(String name, double price){
-        System.out.printf("%20s:%6.2f%n", name, price);
+        System.out.printf("%20s:%6.2f", name, price);
     }
 
     public void printItem(){
-        printItem(getName(), getAdjustedPrice());
+        printItem(name, price);
     }
+
+
 }
