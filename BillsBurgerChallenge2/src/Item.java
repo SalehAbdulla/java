@@ -16,15 +16,12 @@ public class Item {
         if (type.equals("SIDE") || type.equals("DRINK")) {
             return size + " " + name;
         }
+
         return name;
     }
 
     public double getBasePrice() {
         return price;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 
     public double getAdjustedPrice() {
@@ -33,6 +30,10 @@ public class Item {
             case "LARGE" -> getBasePrice() + 1;
             default -> getBasePrice();
         };
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public static void printItem(String name, double price) {
