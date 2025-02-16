@@ -16,7 +16,6 @@ public class Burger extends Item {
         };
     }
 
-
     public void addTopping(String extra1, String extra2, String extra3){
         this.extra1 = new Item("TOPPING", extra1, toppingPrice(extra1));
         this.extra2 = new Item("TOPPING", extra2, toppingPrice(extra2));
@@ -44,6 +43,5 @@ public class Burger extends Item {
         System.out.println("-".repeat(30));
         super.printItem();
     }
-
 
 }

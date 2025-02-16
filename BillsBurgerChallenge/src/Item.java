@@ -26,6 +26,7 @@ public class Item {
             default -> getBasePrice();
         };
     }
+
     public String getName(){
         if (type.equals("DRINK") || type.equals("SIDE")){
             return size + " " + name;
@@ -33,7 +34,7 @@ public class Item {
         return name;
     }
 
-    public void printItem(String name, double price){
+    public static void printItem(String name, double price){
         System.out.printf("%20s:%6.2f%n", name, price);
     }
 
