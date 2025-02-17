@@ -1,40 +1,25 @@
 public class MealOrder {
-
     private Burger burger;
     private Item drink;
-    private Item side;
+    private Item fries;
 
     public MealOrder(){
-        this("regular", "coke", "fries");
+        this.burger = new Burger("MIGHTY CHECKIN", 4);
+        this.drink = new Item("DRINK", "7-Up", 1);
+        this.fries = new Item("FRIES", "Fries", 2);
     }
 
-    public MealOrder(String burgerType, String drinkType, String sideType){
-        this.burger = new Burger(burgerType, 4.0);
-        this.drink = new Item("drink", drinkType, 1.00);
-        this.side = new Item("side", sideType, 1.50);
+    public double getTotalAmount(){
+        return this.burger.getAdjustedPrice()
+                + this.drink.getAdjustedPrice()
+                + this.fries.getAdjustedPrice();
     }
 
-
-    public double getTotalPrice(){
-        return side.getAdjustedPrice()
-                + burger.getAdjustedPrice()
-                + drink.getAdjustedPrice();
-    }
-
-    public void printItemizedList(){
-        burger.printItem();
-        drink.printItem();
-        side.printItem();
+    public void printMeal(){
+        this.burger.printItem();
+        this.drink.printItem();
+        this.fries.printItem();
         System.out.println("-".repeat(30));
-        Item.printItem("TOTAL PRICE",getTotalPrice());
+        System.out.println( "TOTAL AMOUNT: " + getTotalAmount());
     }
-
-    public void addBurgerToppings(String extra1, String extra2, String extra3){
-        burger.addTopping(extra1, extra2, extra3);
-    }
-
-    public void setDrinkSize(String size){
-        drink.setSize(size);
-    }
-
 }

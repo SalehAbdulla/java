@@ -1,47 +1,51 @@
 public class Burger extends Item {
 
-    private Item extra1;
-    private Item extra2;
-    private Item extra3;
+    private Item topping1;
+    private Item topping2;
+    private Item topping3;
 
     public Burger(String name, double price){
-        super("Burger", name, price);
+        super("BURGER", name, price);
     }
 
-    public double toppingPrice(String extra){
-        return switch(extra){
-            case "CHEESE", "AVOCADO" -> 1.0;
-            case "HAM", "SALAMI" -> 0.5;
+    public double getToppingPrice(String toppingName){
+        return switch (toppingName){
+            case "CHEESE", "AVOCADO", "STAKE" -> 2.0;
+            case "DOUBLE MEAT", "DOUBLE CHECKIN" -> 4.0;
             default -> 0.0;
         };
     }
 
-    public void addTopping(String extra1, String extra2, String extra3){
-        this.extra1 = new Item("TOPPING", extra1, toppingPrice(extra1));
-        this.extra2 = new Item("TOPPING", extra2, toppingPrice(extra2));
-        this.extra3 = new Item("TOPPING", extra3, toppingPrice(extra3));
+    public void addTopping(String toppingName1, String toppingName2, String toppingName3){
+        this.topping1 = new Item("TOPPING", toppingName1, getToppingPrice(toppingName1));
+        this.topping2 = new Item("TOPPING", toppingName2, getToppingPrice(toppingName2));
+        this.topping3 = new Item("TOPPING", toppingName3, getToppingPrice(toppingName3));
     }
 
     @Override
-    public double getAdjustedPrice(){
+    public double getAdjustedPrice() {
         return super.getAdjustedPrice()
-                + ((extra1 == null) ? 0 : extra1.getAdjustedPrice())
-                + ((extra2 == null) ? 0 : extra2.getAdjustedPrice())
-                + ((extra3 == null) ? 0 : extra3.getAdjustedPrice());
-    }
-
-    public void printReceipt(){
-        printItem("BASE BURGER ", getBasePrice());
-        if (extra1 != null) {extra1.printItem();}
-        if (extra2 != null) {extra2.printItem();}
-        if (extra3 != null) {extra3.printItem();}
+                + ((topping1 == null) ? 0 : topping1.getBasePrice())
+                + ((topping2 == null) ? 0 : topping2.getBasePrice())
+                + ((topping3 == null) ? 0 : topping3.getBasePrice());
     }
 
     @Override
-    public void printItem(){
-        printReceipt();
+    public void printItem() {
+        printItem("BASE BURGER", getBasePrice());
+        if (topping1 != null){
+            topping1.printItem();
+        }
+
+        if (topping2 != null){
+            topping2.printItem();
+        }
+
+        if (topping3 != null){
+            topping3.printItem();
+        }
+
         System.out.println("-".repeat(30));
         super.printItem();
     }
-
 }

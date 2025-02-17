@@ -5,8 +5,8 @@ public class Item {
     private double price;
 
     public Item(String type, String name, double price){
-        this.type = type;
-        this.name = name;
+        this.type = type.toUpperCase();
+        this.name = name.toUpperCase();
         this.size = "MEDIUM";
         this.price = price;
     }
@@ -15,20 +15,8 @@ public class Item {
         this.size = size;
     }
 
-    public double getBasePrice(){
-        return price;
-    }
-
-    public double getAdjustedPrice(){
-        return switch (size){
-            case "LARGE" -> getBasePrice() + 1;
-            case "SMALL" -> getBasePrice() - 0.5;
-            default -> getBasePrice();
-        };
-    }
-
     public String getName(){
-        if (type.equals("DRINK") || type.equals("SIDE")){
+        if (type.equals("SIDE") || type.equals("DRINK")){
             return size + " " + name;
         }
         return name;
@@ -40,6 +28,18 @@ public class Item {
 
     public void printItem(){
         printItem(getName(), getAdjustedPrice());
+    }
+
+    public double getBasePrice(){
+        return price;
+    }
+
+    public double getAdjustedPrice(){
+        return switch(size) {
+            case "LARGE" -> getBasePrice() + 1;
+            case "Small" -> getBasePrice() - 0.5;
+            default -> getBasePrice();
+        };
     }
 
 }
