@@ -1,0 +1,1 @@
+Reverse array so it be from {1, 2, 3, 4, 5} to {5, 4, 3, 2, 1} its not a sorting case here.
