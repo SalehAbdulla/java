@@ -11,17 +11,15 @@ public class Solution {
 
         int[] mergedArray = new int[nums1.length + nums2.length];
 
+        int i = 0;
+        int j = 0;
         int k = 0;
 
-        for (int i = 0; i < nums1.length; i++){
-            mergedArray[k++] = nums1[i];
-        }
+        while (i < nums1.length && j < nums2.length){
+            if (nums1[i] < nums2[j]){
 
-        for (int j = 0; j < nums2.length; j++){
-            mergedArray[k++] = nums2[j];
+            }
         }
-
-        Arrays.sort(mergedArray);
 
 
         // Find the median
