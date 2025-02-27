@@ -9,7 +9,7 @@ record GroceryItem(String name, String type, int count){
     }
 }
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
         GroceryItem[] groceryArray = new GroceryItem[3];
         groceryArray[0] = new GroceryItem("MILK");
@@ -30,7 +30,9 @@ public class Main{
         ArrayList<GroceryItem> groceryItems = new ArrayList<>();
         groceryItems.add(new GroceryItem("Milk"));
         groceryItems.add(new GroceryItem("Butter"));
+        System.out.println(groceryItems);
 
+        
 
     }
 }
