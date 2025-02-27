@@ -43,8 +43,14 @@ public class MoreLists {
 
         System.out.println(groceriesArrayList);
 
+        groceriesArrayList.remove("yogurt");
+        System.out.println(groceriesArrayList);
 
+        groceriesArrayList.removeAll(List.of("apples", "eggs"));
+        System.out.println(groceriesArrayList);
 
+        groceriesArrayList.retainAll(List.of("apple", "milk", "cheese"));
+        System.out.println(groceriesArrayList);
 
 
 
