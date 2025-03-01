@@ -10,6 +10,7 @@ public class AndMoreLists {
         arrayList.add("Saleh");
         arrayList.add("Abdulla");
         System.out.println(arrayList);
+        System.out.println(arrayList.get(0));
     }
 
 }
