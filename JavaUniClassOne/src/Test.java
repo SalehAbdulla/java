@@ -1,4 +1,9 @@
-package PACKAGE_NAME;
-
 public class Test {
+
+    int val;
+
+    public Test(){
+        this.val = val;
+    }
+
 }

@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        Item avocado = new Item("DRINK", "AVOCADO", 1);
-        avocado.setSize("LARGE");
-        avocado.printItem();
+        Burger burger = new Burger("MIGHTY CHECKIN", 4.0);
+        burger.printFullItems();
+
     }
 }

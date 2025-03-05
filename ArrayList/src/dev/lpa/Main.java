@@ -11,6 +11,7 @@ record GroceryItem(String name, String type, int count){
 
 public class Main {
     public static void main(String[] args) {
+
         GroceryItem[] groceryArray = new GroceryItem[3];
         groceryArray[0] = new GroceryItem("MILK");
         groceryArray[1] = new GroceryItem("apples", "PRODUCE", 6);
@@ -19,7 +20,9 @@ public class Main {
 
         System.out.println("-".repeat(30));
 
-        // if we did not explicitly specify the type of the list, then by default it will be a list of Objects
+        // if we did not explicitly specify the type of the list,
+        // then by default it will be a list of Objects
+
         ArrayList objectList = new ArrayList();
         objectList.add(new GroceryItem("Butter"));
         objectList.add("Yogurt");
@@ -32,7 +35,6 @@ public class Main {
         groceryItems.add(new GroceryItem("Butter"));
         System.out.println(groceryItems);
 
-        
 
     }
 }

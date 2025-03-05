@@ -13,7 +13,9 @@ record GroceryItem(String name, String type, int count){
     public String toString() {
         return String.format("%d %s in %s", count, name.toUpperCase(), type);
     }
+
 }
+
 
 public class Main {
     public static void main(String[] args) {

@@ -7,6 +7,7 @@ import java.util.List;
 public class MoreLists {
 
     public static void main(String[] args) {
+
         // Array of type String
         String[] item = {"apples", "bananas", "milk", "eggs"};
 
@@ -24,7 +25,7 @@ public class MoreLists {
         System.out.println(groceriesArrayList);
 
         // Another ArrayList of type string -- Adding the list directly
-        ArrayList<String> anotherArrayList = new ArrayList<>(List.of("cheese", "salami", "mustard"));
+        ArrayList<String> anotherArrayList = new ArrayList<>(List.of("yogurt","cheese", "salami", "mustard"));
         System.out.println(anotherArrayList);
 
         groceriesArrayList.addAll(anotherArrayList);
@@ -34,30 +35,21 @@ public class MoreLists {
         System.out.println("Third Item = " + groceriesArrayList.get(2));
 
         if (groceriesArrayList.contains("mustard")){
-            System.out.println("List contain mustard");
+            System.out.println("Array List contains mustard");
         }
 
         groceriesArrayList.add("yogurt");
-        System.out.println(groceriesArrayList.indexOf("yogurt"));
-        System.out.println(groceriesArrayList.lastIndexOf("yogurt"));
+        System.out.println("first = " + groceriesArrayList.indexOf("yogurt"));
+        System.out.println("last = " + groceriesArrayList.lastIndexOf("yogurt"));
 
         System.out.println(groceriesArrayList);
-
+        groceriesArrayList.remove(1);
+        System.out.println(groceriesArrayList);
         groceriesArrayList.remove("yogurt");
         System.out.println(groceriesArrayList);
 
-        groceriesArrayList.removeAll(List.of("apples", "eggs"));
-        System.out.println(groceriesArrayList);
-
-        groceriesArrayList.retainAll(List.of("apple", "milk", "cheese"));
-        System.out.println(groceriesArrayList);
-
-
-
-
-
+        System.out.println(List.of("apples", "milk", "mustard"));
 
     }
-
-
 }
+

@@ -1,4 +1,2 @@
-package PACKAGE_NAME;
-
-public record EmployeeRecord() {
+public record EmployeeRecord(String name, int employeeNumber) {
 }
