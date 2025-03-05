@@ -1,0 +1,26 @@
+In this exercise,
+we will use the Scanner class to read-in a series of values from a user and print it out to screen in a specific format.
+Your task is to write a program (class name: Ex1) that will prompt and read from the user details in the following sequence:
+
+Full name
+Age
+Nationality
+Your program should output the information in the same format shown in the example below:
+
+Hint: Don't forget the import statement for Scanner. To print an empty line, use \n in your System.out.println()
+For example: System.out.println(" \n Line 1 \n Line 2 \n Line 3")
+
+For example:
+
+Input	Result
+Ali Ahmad
+55
+Malaysia
+Please enter your name:
+Please enter your age:
+Please enter your country of birth:
+
+Hi Ali Ahmad, you're 55 and born in Malaysia
+Answer:(penalty regime: 0 %)
+Ace editor not ready. Perhaps reload page?
+Falling back to raw text area.
