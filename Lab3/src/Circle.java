@@ -10,6 +10,7 @@ public class Circle {
 
         // area (A = π R2)
         double area = Math.PI * Math.pow(userInput, 2);
+
         // circumference (2 π R).
         double circumference = 2 * Math.PI * userInput;
 

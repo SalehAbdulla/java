@@ -12,7 +12,7 @@ public class Initials {
         String firstNameChar = name.next();
         String secondNameChar = name.next();
 
-        System.out.println("Your initials are: "+ firstNameChar.charAt(0) + "." + secondNameChar.charAt(0) + ".");
+        System.out.println("Your initials are: " + firstNameChar.charAt(0) + "." + secondNameChar.charAt(0) + ".");
         System.out.printf("Your family name is: %s", secondNameChar);
 
     }

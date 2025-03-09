@@ -10,11 +10,13 @@ public class ISBN {
 
         int language  = name.nextInt();
         int publisher = name.nextInt();
+
         int bookIs  = name.nextInt();
         int checkIs = name.nextInt();
 
         System.out.printf("Language is: %d%n", language);
         System.out.printf("Publisher is: %d%n", publisher);
+
         System.out.printf("Book is: %d%n", bookIs);
         System.out.printf("Check is: %d%n", checkIs);
 

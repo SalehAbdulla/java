@@ -1,0 +1,20 @@
+Result
+
+Please enter the ISBN in the following format x-xxx-xxxxx-x:
+Language is: 1
+Publisher is: 234
+Book is: 56789
+Check is: 0
+
+
+Input
+
+1-234-56789-0
+
+-------
+
+Input	Result
+Philippe Pringuet
+Please enter your fullname:
+Your initials are: P.P.
+Your family name is: Pringuet
