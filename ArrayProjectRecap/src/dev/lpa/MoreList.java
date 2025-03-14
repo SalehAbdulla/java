@@ -55,7 +55,6 @@ public class MoreList {
         System.out.println("isEmpty = " + groceries.isEmpty());
 
 
-
         groceries.addAll(List.of("Apples", "milk", "mustard", "cheese"));
         groceries.addAll(Arrays.asList("eggs", "pickles", "mustard", "ham"));
         System.out.println(groceries);
