@@ -1,0 +1,16 @@
+
+
+1- Create an Item class, name, type, price, size.
+    1- setSize.
+    2- printItem. -> this would have two methods, a static and non-static.
+    3- getBasePrice.
+    4- getAdjustedPrice.
+    5- getItem.
+
+2- Create a Burger class, inherit Item class, extra1, extra2, and extra3.
+    1- addExtraItem.
+    2- printAllItems.
+    3- Override printItem method.
+
+
+
