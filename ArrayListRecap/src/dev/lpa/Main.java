@@ -32,8 +32,16 @@ public class Main {
 
         ArrayList<GroceryItem> groceryItemArrayList = new ArrayList<>();
         groceryItemArrayList.add(new GroceryItem("Butter"));
-        System.out.println(groceryItemArrayList);
+        groceryItemArrayList.add(new GroceryItem("milk"));
+        groceryItemArrayList.add(new GroceryItem("oranges", "PRODUCE", 6));
 
+        // Replace an element
+        groceryItemArrayList.set(0, new GroceryItem("apples", "PRODUCE", 6));
+
+        // Remove an element
+        groceryItemArrayList.remove(0);
+
+        System.out.println(groceryItemArrayList);
 
 
 
