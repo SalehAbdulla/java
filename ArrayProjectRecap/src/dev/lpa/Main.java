@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 record GroceryItem(String name, String type, int count) {
+
     public GroceryItem(String name) {
         this(name, "DAIRY", 1);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("%d %s in %s", count, name.toUpperCase(), type);
     }
 
@@ -17,7 +18,8 @@ record GroceryItem(String name, String type, int count) {
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+
         GroceryItem[] groceryArray = new GroceryItem[3];
 
         groceryArray[0] = new GroceryItem("milk");
@@ -31,6 +33,7 @@ public class Main {
         objectList.add("Yogurt");
 
         ArrayList<GroceryItem> groceryItems = new ArrayList<>();
+
         groceryItems.add(new GroceryItem("Butter"));
         groceryItems.add(new GroceryItem("Milk"));
         groceryItems.add(new GroceryItem("Butter", "PRODUCE", 4));
@@ -41,4 +44,5 @@ public class Main {
         System.out.println(groceryItems);
 
     }
+
 }
