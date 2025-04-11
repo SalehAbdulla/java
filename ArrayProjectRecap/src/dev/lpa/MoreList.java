@@ -1,6 +1,7 @@
 package dev.lpa;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class MoreList {
@@ -37,7 +38,7 @@ public class MoreList {
         // We can remove any element, either by its index or value
         groceries.remove(1);
         groceries.remove("yogurt");
-        System.out.println(groceries);
+        //System.out.println(groceries);
 
         // Remove a list of element.
         groceries.removeAll(List.of("mustard", "apple"));
@@ -47,12 +48,23 @@ public class MoreList {
 
         // remove everything from the list
         groceries.clear();
-        System.out.println(groceries);
-        System.out.println("isEmpty = " + groceries.isEmpty());
+        //System.out.println(groceries);
+        //System.out.println("isEmpty = " + groceries.isEmpty());
 
         // There are two ways to add elements, either by using List.of() static class or Arrays.asList()
         groceries.addAll(List.of("apple", "mild", "mustard"));
         groceries.addAll(Arrays.asList("eggs", "pickles", "mustard", "ham"));
+
+        //  Sort the ArrayList with natural Order .sort(Comparator.naturalOrder()) the ArrayList
+        groceries.sort(Comparator.naturalOrder());
+        System.out.println(groceries);
+
+        // Sort the ArrayList with Reverse Order .sort(Comparator.reverseOrder());
+        groceries.sort(Comparator.reverseOrder());
+
+        // convert the ArrayList into Array
+        var convertIntoArray = groceries.toArray(new String[groceries.size()]);
+        System.out.println(Arrays.toString(convertIntoArray));
 
     }
 }

@@ -9,5 +9,6 @@ public class Initials {
 
         System.out.printf("Your initials are: %c.%c.%n", fullName.charAt(0), fullName.charAt(fullName.indexOf(" ") + 1));
         System.out.println("Your family name is: " + fullName.substring(fullName.indexOf(" ")));
+
     }
 }

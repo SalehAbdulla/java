@@ -14,5 +14,6 @@ public class InitialsDelimiter {
 
         System.out.printf("Your initials are: %c.%c.%n", firstName.charAt(0), lastName.charAt(0));
         System.out.println("Your family name is: " + lastName);
+
     }
 }

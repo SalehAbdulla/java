@@ -10,5 +10,6 @@ public class Main {
         System.out.println(userInput.toUpperCase());
         System.out.println(userInput.toLowerCase());
         System.out.println(userInput.length());
+
     }
 }

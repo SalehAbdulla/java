@@ -7,6 +7,7 @@ public class Hypotenuse {
 
         hypotenuse(5.5, 4.6);
         hypotenuse(5.5, 0);
+
     }
 
     public static void hypotenuse(double value1, double value2) {

@@ -2,6 +2,7 @@ import java.util.*;
 
 public class NameOfTheMonth {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the month number to get month's name");
         int userInput = scanner.nextInt();

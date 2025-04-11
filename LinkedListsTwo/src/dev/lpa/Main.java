@@ -1,6 +1,8 @@
 package dev.lpa;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,8 +36,13 @@ public class Main {
 //        removeElement(placesToVisit);
 //        System.out.println("3rd print = " + placesToVisit);
 
-        gettingElements(placesToVisit);
+//      gettingElements(placesToVisit);
 
+        printItinerary(placesToVisit);
+
+//        removeWithItinerary(placesToVisit);
+
+        listIterator(placesToVisit);
     }
 
     // Let's create a method called more elements
@@ -121,6 +128,7 @@ public class Main {
         System.out.println("Retrieved 5th Element using .get(4) = " + list.get(4));
         System.out.println("First .getFirst() Element = " + list.getFirst());
         System.out.println("Last .getLast() Element = " + list.getLast());
+
         // was can use as well indexOf & lastIndexOf
         // to get the index if an element in a list
         // as we do in an ArrayList
@@ -143,10 +151,66 @@ public class Main {
         System.out.println("Element from .peekFirst() " + list.peekFirst());
         System.out.println("Element from .peekLast() " + list.peekLast());
 
-
-
     }
     //  Itinerary Examples
 
+    public static void printItinerary(LinkedList<String> list) {
+        System.out.println("Trip starts at " + list.getFirst());
+//        for (int i = 1; i < list.size(); i++) {
+//            System.out.println("From " + list.get(i - 1) + " to " + list.get(i));
+//        }
 
+//        String temp = list.getFirst();
+//        for (String place: list){
+//            System.out.println("From " + temp + " to " + place);
+//            temp = place;
+//
+//        }
+        ListIterator<String> iterator = list.listIterator();
+
+        String from = iterator.next();
+
+        while (iterator.hasNext()) {
+            var to = iterator.next();
+            System.out.println("From " + from + " --> " + to);
+            from = to;
+        }
+
+
+        System.out.println("Trip ends at " + list.getLast());
+    }
+
+    public static void removeWithItinerary(LinkedList<String> list) {
+        System.out.println(list);
+        var it = list.iterator();
+        while (it.hasNext()) {
+            if (it.next().equals("Brisbane")) {
+                it.remove();
+            }
+        }
+        System.out.println(list);
+    }
+
+    public static void listIterator(LinkedList<String> list) {
+
+        System.out.println(list);
+        
+        // with listIterator, we have extra functionality
+        var it = list.listIterator();
+        while (it.hasNext()) {
+            if (it.next().equals("Brisbane")) {
+                it.add("Bahrain");
+            }
+        }
+
+        while (it.hasPrevious()){
+            System.out.println(it.previous());
+        }
+
+        System.out.println(list);
+
+        var iterator2 = list.listIterator(3);
+        System.out.println(iterator2.previous());
+
+    }
 }

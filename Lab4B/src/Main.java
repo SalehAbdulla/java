@@ -11,8 +11,8 @@ public class Main {
             hasChar = true;
         }
 
-
         //End of your code
         return hasChar;
     }
+
 }

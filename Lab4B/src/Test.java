@@ -4,6 +4,7 @@ public class Test {
         incrementByTwo(nb);
         System.out.println("nb = " + nb);
     }
+
     public static void incrementByTwo(int num) {
         num = num + 2;
     }
