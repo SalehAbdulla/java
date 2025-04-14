@@ -1,51 +1,61 @@
 import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Invoice {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static double totalAmountDue;
-    public static double userPayment;
+    public static DecimalFormat fmt = new DecimalFormat("#0.000");
+    public static double totalBill = 0;
+    public static double allPayments = 0;
 
     public static void main(String[] args) {
 
-        DecimalFormat fmt = new DecimalFormat("#0.000");
-        boolean endLoop = false;
 
-        while (!endLoop) {
+        boolean anotherItem = true;
+//        char userInput = scanner.nextLine().toUpperCase().charAt(0);
+        do {
+
             System.out.println("Enter Price");
-            totalAmountDue += scanner.nextDouble();
+            Scanner newBillScanner = new Scanner(System.in);
 
-            System.out.println("Another item? enter Y or N");
-            char userInput = scanner.nextLine().toUpperCase().charAt(0);
-            switch (userInput) {
-                case 'Y':
+            double newBill = newBillScanner.nextDouble();
+            totalBill += newBill;
 
-                    double billAmount = scanner.nextDouble();
-                    totalAmountDue += billAmount;
-                    break;
-                case 'N':
-                    System.out.println("Total due: " + totalAmountDue);
+            Scanner yesOrNoScanner = new Scanner(System.in);
+            System.out.println("Another Item? enter Y or N");
+            char yesOrNo = yesOrNoScanner.nextLine().toUpperCase().charAt(0);
 
-                    do {
-                        userPayment += getPayment();
-                    } while (userPayment >= totalAmountDue);
+            if (yesOrNo == 'Y') {
+                continue;
+            } else if (yesOrNo == 'N'){
+                anotherItem = false;
+                System.out.println("Total Due: " + totalBill);
+                System.out.println("Enter Payment");
+                Scanner getPaymentScanner = new Scanner(System.in);
 
-                    System.out.println("Paid in full. Thank you for shoppping with ACME Store Your change is: " + fmt.format(userPayment - totalAmountDue));
-                    break;
+                do {
+                    double getPayment = getPaymentScanner.nextDouble();
+                    allPayments += getPayment;
+                    if (allPayments < totalBill) {
+                        System.out.println("Insufficient Payment");
+                        System.out.println("Total Due: " + totalBill);
+                        System.out.println("Enter Payment");
+                    }
+                } while (allPayments < totalBill);
 
-                default:
-                    System.out.println("Invalid entry");
+                if (allPayments >= totalBill) {
+                    String change = fmt.format(Math.abs(totalBill - allPayments));
+                    System.out.println("Paid In Full. Thank you for shoppping with ACME Store Your change is: " + change);
+                }
+
             }
 
-            System.out.println("Another item? enter Y or N");
 
-        }
+        } while (anotherItem);
+
 
     }
 
-    public static double getPayment() {
-        System.out.println("Enter payment");
-        return scanner.nextDouble();
-    }
+
 }
