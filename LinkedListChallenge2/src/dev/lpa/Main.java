@@ -1,44 +1,44 @@
 package dev.lpa;
 
-import javax.swing.text.html.HTMLDocument;
-import java.util.Iterator;
 import java.util.LinkedList;
 
-record Place(String name, int distance) {
-
+record Place(String place, int distance) {
     @Override
     public String toString() {
-        return String.format("%s (%d)", name, distance);
+        return String.format("%s (%d)", place, distance);
     }
 }
 
 public class Main {
     public static void main(String[] args) {
         LinkedList<Place> placesToVisit = new LinkedList<>();
-        Place bahrain = new Place("Bahrain", 110);
-        Place saudi = new Place("Saudi", 135);
 
-        addPlace(bahrain, placesToVisit);
-        addPlace(saudi, placesToVisit);
-
-        addPlace(new Place("Kuwait", 118), placesToVisit);
-        addPlace(new Place("bahrain", 110), placesToVisit);
+        // Testing 1
+        add(new Place("Bahrain", 135), placesToVisit);
+        add(new Place("Saudi", 110), placesToVisit);
+        add(new Place("Qatar", 118), placesToVisit);
+        add(new Place("Saudi", 110), placesToVisit);
 
         System.out.println(placesToVisit);
-
     }
 
-
-    public static void addPlace(Place place, LinkedList<Place> list){
-
-        for (Place p : list){
-            if (p.name().equalsIgnoreCase(place.name())){
-                return;
-            }
+    // Add function, sort entry by distance, and don't allow duplication
+    public static void add(Place place, LinkedList<Place> linkedList) {
+        if (linkedList.contains(place)) {
+            System.out.println("Duplication found: " + place);
+            return;
         }
 
-        list.add(place);
+        // iteration tracker if value less, then insert new place, so the list becomes sorted
+        int indexTracker = 0;
+        for (Place l : linkedList) {
+            if (place.distance() < l.distance()) {
+                linkedList.add(indexTracker, place);
+                return;
+            }
+            indexTracker++;
+        }
 
+        linkedList.add(place);
     }
-
 }
