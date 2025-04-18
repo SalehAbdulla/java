@@ -1,3 +1,5 @@
+package jasmis;
+
 public class Item {
     private String name;
     private String type;
@@ -18,7 +20,7 @@ public class Item {
     }
 
     public void setSize(String size) {
-        this.size = size.toUpperCase();
+        this.size = size.toUpperCase().;
     }
 
     public double getBasePrice(){
@@ -37,8 +39,9 @@ public class Item {
         System.out.printf("%20s:%6.2f%n",name, price);
     }
 
-    public void printItem(){
+    public String printItem(){
         printItem(getName(), getAdjustedPrice());
+        return " ";
     }
 
 

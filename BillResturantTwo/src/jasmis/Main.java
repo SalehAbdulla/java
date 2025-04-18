@@ -1,9 +1,9 @@
+package jasmis;
+
 public class Main {
     public static void main(String[] args) {
 
         Burger burger = new Burger("MIGHTY CHECKIN", 4.0);
-        burger.addToppings("CHEESE", "AVOCADO", "SALAMI");
         burger.printItem();
-
     }
 }
