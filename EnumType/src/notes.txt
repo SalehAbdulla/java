@@ -1,0 +1,52 @@
+package dev.lpa;
+
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] main) {
+        System.out.println(DayOfTheWeek.MON);
+        System.out.println(MonthsInTheYear.NORTH);
+
+
+        DayOfTheWeek weekDay = DayOfTheWeek.FRI;
+        System.out.println(weekDay);
+
+        System.out.printf("Name is %s, Ordinal Value = %d%n",
+                weekDay.name(), weekDay.ordinal());
+
+        System.out.println("-".repeat(30));
+
+        System.out.println(getRandomDay());
+
+    }
+
+    public static DayOfTheWeek getRandomDay() {
+        int getRandomNumber = new Random().nextInt(7);
+        var allDays = DayOfTheWeek.values();
+        return allDays[getRandomNumber];
+    }
+
+
+    // enum is used to declare a limited set of constants, and sometimes there is natural to listing,
+    // as in the case of daysOfTheWeek
+
+    // Creating an enum is like creating a class
+
+
+//    public enum DayOfTheWeek {
+//        // UPPERCASE IS THE PREFER STYLE
+//        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, FRIDAY, SATURDAY
+//    }
+
+    // Another possible enum sets
+
+    public enum MonthsInTheYear {
+        EAST, NORTH, WEST, SOUTH
+    }
+
+    public enum SetOfSizes {
+        EXTRA_SMALL, SMALL, MEDIUM, LARGE, EXTRA_LARGE
+    }
+
+
+}
