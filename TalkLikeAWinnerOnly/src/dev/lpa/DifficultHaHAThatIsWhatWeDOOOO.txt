@@ -1,0 +1,20 @@
+You are planning a holiday in Europe in the summer. You have checked some prices of hotels, travel, food, etc in Euros.
+You are not sure yet how much money you will have to spend in the summer.
+
+Write  a program which will convert BD amounts to Euros.
+
+Notes:
+
+Assume that  1 BD = 1.85 Euro.
+If the user enters -99 the program will exit.
+Amounts should be formatted to 2 decimal places (not compulsory 1.500 shows as 1.5, 200.000 shows as 200, 12.250 shows as 12.25).
+Output from and input to the program should be similar to the example below
+
+
+Input	Result
+1.5
+-99
+        BD to EUR converter
+        Please enter amount (-99 to quit):
+        1.5BD is equal to 2.78Euros
+        Please enter amount (-99 to quit):
