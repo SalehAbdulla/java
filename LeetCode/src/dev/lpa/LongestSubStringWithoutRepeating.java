@@ -4,15 +4,28 @@ import java.time.OffsetDateTime;
 
 public class LongestSubStringWithoutRepeating {
     public static void main(String[] args) {
-
+        String s = "abcabcbb";
+        int longestSubString = longestSubStringWithoutRepeating(s);
+        System.out.println(longestSubString);
     }
 
 
-    public static int longestSubStringWithoutRepeating(String s){
-
+    public static int longestSubStringWithoutRepeating(String s) {
+        //Input: s = "abcabcbb"
         int maxCounted = 0;
 
+        for (int leftPointer = 0, rightPointer = 0; rightPointer < s.length(); rightPointer++) {
 
+            Integer indexOfLastVisitedChar = s.indexOf(s.charAt(rightPointer),leftPointer);
+
+            if (indexOfLastVisitedChar != rightPointer) {
+                leftPointer = indexOfLastVisitedChar + 1;
+            }
+
+            maxCounted = Math.max(maxCounted, rightPointer - leftPointer + 1);
+        }
+
+        return maxCounted;
 
     }
 
