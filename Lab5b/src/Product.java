@@ -6,7 +6,6 @@ public class Product {
 
         int result = 1;
 
-
         for (int i = startValue; i <= stopValue; i++) {
             result *= i;
         }
