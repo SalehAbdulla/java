@@ -1,7 +1,7 @@
 package dev.lpa;
 
 public abstract class Animal {
-    // Sub-classes can get access to type method directly without a getter method
+    // Subclasses can get access to type method directly without a getter method
     protected String type;
     private String size;
     private double weight;
@@ -15,6 +15,9 @@ public abstract class Animal {
     public abstract void move(String speed);
     public abstract void makeNoise();
 
+    public final String getExplicitType(){
+        return getClass().getSimpleName() + " ( " + type + " ) ";
+    }
 
 
 }
