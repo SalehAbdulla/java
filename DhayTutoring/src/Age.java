@@ -10,10 +10,10 @@ public class Age {
         int userAge = scanner.nextInt();
 
         if (userAge == 19 || userAge == 26) {
-            System.out.println("OUT OUT OUT OUT, NEVER COME AGAIN !!!!!!!!!");
+            System.out.println("A7la NAAAS");
 
         } else if (userAge < CAKE_AGE) {
-            System.out.println("A7la NAAAS");
+            System.out.println("OUT OUT OUT OUT, NEVER COME AGAIN !!!!!!!!!");
 
         } else {
             System.out.println("7yaaaaaacomme yhal yhla 🤘☺️❤️");
