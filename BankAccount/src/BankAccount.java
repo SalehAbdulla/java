@@ -68,13 +68,11 @@ public class BankAccount {
         } else {
             System.out.println("Not enough Money for withdraw process");
         }
-
     }
 
     @Override
     public String toString() {
         return " Account #" + accountNumber + " | Name: " + customerName + " | Balance: BHD" + formatText(accountBalance);
     }
-
 
 }
