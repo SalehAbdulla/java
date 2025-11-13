@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple page with React</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="./react-lib/react.development.js"></script>
+    <script src="./react-lib/react-dom.development.js"></script>
+
+    <script>
+        const randNum = Math.floor(Math.random() * 101);
+
+        const newEle = React.createElement("h1", null, `Generated Number: ${randNum}`);
+
+        const resultElement = React.createElement(
+            "h2",
+            null,
+            randNum % 2 === 0 ? "This is an even number" : "This is an odd number"
+        );
+
+        const container = React.createElement("div", null, [
+            newEle,
+            resultElement
+        ]);
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(container);
+    </script>
+</body>
+</html>

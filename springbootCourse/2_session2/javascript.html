@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simple web page with JS</title>
+        <link rel="stylesheet" href="./css/index.css">
+    </head>
+    <body>
+        <div id="root"></div>
+    <script>
+
+        const randNum = Math.floor(Math.random() * 101)
+        const newEle = document.createElement("h1")
+        newEle.innerHTML = `Generated Number: ${randNum}`
+        
+        const newEle2 = document.createElement("h2")
+        if (randNum %2 == 0) {
+            newEle2.innerHTML = `The number ${randNum} is even!`
+        } else {
+            newEle2.innerHTML = `The number ${randNum} is odd!`
+        }
+
+        const root = document.getElementById("root")
+        root.appendChild(newEle)
+        root.appendChild(newEle2)
+
+    </script>
+    </body>
+</html>
