@@ -5,9 +5,24 @@ public class BankAccount {
     private String email;
     private String number;
 
+    public BankAccount(){
+        this(12345, 2222222, "Default name", "Default email", "Default Phone");
+    }
 
+    public BankAccount(int accountNumber, double accountBalance, String customerName) {
+        this(accountNumber, accountBalance, customerName, "Default", "Default");
+            //        this.accountNumber = accountNumber;
+            //        this.accountBalance = accountBalance;
+            //        this.customerName = customerName;
+    }
 
-
+    public BankAccount(int accountNumber, double accountBalance, String customerName, String email, String number){
+        this.accountNumber = accountNumber;
+        this.accountBalance = accountBalance;
+        this.customerName = customerName;
+        this.email = email;
+        this.number = number;
+    }
 
     public double getAccountNumber() {
         return accountNumber;
@@ -61,9 +76,6 @@ public class BankAccount {
         }
         this.accountBalance = this.accountBalance - amount;
         System.out.println("Here is your amount: " + amount + " Your Balance: " + this.accountBalance);
-
-
-
     }
 
 }
