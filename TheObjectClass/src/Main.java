@@ -1,42 +1,52 @@
-public class Main extends Object {
+public class Main {
     public static void main(String[] args) {
-
-        Student max = new Student("Max", 21);
-        System.out.println(max);
-
-        PrimarySchoolStudent jimmy = new PrimarySchoolStudent("Jimmy", 8 , "Carol");
-        System.out.println(jimmy);
-
+        Student saleh = new Student("Max", 21);
+        System.out.println(saleh.toString());
+        PrimaryClassStudent me = new PrimaryClassStudent("ABDULLA", "38389522");
+        System.out.println(me.toString());
     }
 }
 
-class Student {
-    protected String name;
-    protected int age;
+class PrimaryClassStudent {
+    private String parentName;
+    private String phoneNumber;
 
-    Student(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public PrimaryClassStudent(){}
+    public PrimaryClassStudent(String parentName, String phoneNumber) {
+        this.parentName = parentName;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
+        return this.parentName + " | Phone number: " + phoneNumber;
+    }
+}
+
+class Student extends PrimaryClassStudent{
+    private String name;
+    private int age;
+
+    public Student(String name, int age) {
+        super("Abdulla", "33333333");
+        this.name = name;
+        this.age = age;
+    }
+
+//    @Override
+//    public String toString() {
+//        return super.toString();
+//
+//    }
+
+    @Override
+    public String toString() {
         return name + " is " + age;
+//        return "Student{" +
+//                "name='" + name + '\'' +
+//                ", age=" + age +
+//                '}';
     }
 }
 
-class PrimarySchoolStudent extends Student {
-
-    private String parentName;
-
-    PrimarySchoolStudent(String name, int age, String parentName){
-        super(name, age);
-        this.parentName = parentName;
-    }
-
-    public String toString(){
-        return super.name + " " +  parentName + " is " + super.age;
-    }
-
-}
 
