@@ -7,5 +7,7 @@ public class HourlyEmployee extends Employee {
         this.hourlyPayRate = hourlyPayRate;
     }
 
-
+    public double getDoublePay(){
+        return this.hourlyPayRate * 2;
+    }
 }
