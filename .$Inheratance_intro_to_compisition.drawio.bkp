@@ -124,7 +124,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="PdIHFrB-vFMuatmU9Ooo-53" value="inheritance is a way to reuse functionality and attributes&lt;div&gt;Composition is a way to make the combination of classes act like a single coherent object.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="180" y="353" width="500" height="40" as="geometry" />
+          <mxGeometry x="175" y="353" width="500" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

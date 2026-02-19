@@ -1,0 +1,83 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5">
+  <diagram name="Page-1" id="BHRAvEQMK13wzsZVKR6i">
+    <mxGraphModel dx="924" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-1" value="SmartKitchen" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="190" width="200" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-2" value="brewMaster: CoffeMaker&lt;div&gt;dishWasher: DishWasher&lt;br&gt;iceBox: Refrigerator&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-1">
+          <mxGeometry y="30" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-3" value="addWater()&lt;div&gt;pourMilk()&lt;/div&gt;&lt;div&gt;loadDishwasher()&lt;/div&gt;&lt;div&gt;setKitchenState()&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-1">
+          <mxGeometry y="90" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-4" value="doKitchenWork()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-1">
+          <mxGeometry y="180" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-5" value="Refrigerator" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="80" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-6" value="hasWorkToDo: Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-5">
+          <mxGeometry y="30" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-8" value="orderFood()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-5">
+          <mxGeometry y="90" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-10" value="DishWasher" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="260" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-11" value="hasWorkToDo: Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-10">
+          <mxGeometry y="30" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-12" value="doDishes()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-10">
+          <mxGeometry y="90" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-13" value="CoffeMaker" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="430" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-14" value="hasWorkToDo: Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-13">
+          <mxGeometry y="30" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-15" value="doDishes()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="LhbwmNipnJmBrC1IDbHN-13">
+          <mxGeometry y="90" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.015;entryY=0.289;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="LhbwmNipnJmBrC1IDbHN-6" target="LhbwmNipnJmBrC1IDbHN-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="LhbwmNipnJmBrC1IDbHN-11" target="LhbwmNipnJmBrC1IDbHN-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="325" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.015;entryY=0.822;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="LhbwmNipnJmBrC1IDbHN-14" target="LhbwmNipnJmBrC1IDbHN-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-19" value="addWater() will set the Coffee Maker&#39;s hasWorkToDo field to true&lt;br&gt;pourMilk() will set the Refrigerator&#39;s hasWorkToDo field to true&lt;br&gt;loadDishwasher() will set the hasWorkToDo flag to true for the appliance" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="630" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-20" value="setKitchenState() will takes 3 boolean values, which set each appliance accordingly" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="700" width="470" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-21" value="2 ways to execute the appliances" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="255" y="810" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-22" value="1) using getters then chaining method." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="860" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-23" value="2) Without access the appliances directly" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="235" y="920" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-24" value="a) Add logging if work is being done." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="285" y="880" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="LhbwmNipnJmBrC1IDbHN-25" value="a) Should call doKitchenWork(), and delegate the work to any of its appliances&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="175" y="950" width="440" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

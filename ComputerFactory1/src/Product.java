@@ -20,19 +20,15 @@ class Monitor extends Product {
     public Monitor(String model, String manufacturer) {
         super(model, manufacturer);
     }
+
     public Monitor(String model, String manufacturer, int size, String resolution) {
         super(model, manufacturer);
         this.size = size;
         this.resolution = resolution;
     }
 
-    public void loadProgram(String programName) {
-        System.out.println(programName + " is running...");
-    }
-
-
     public void drawPixel(int x, int y, String color) {
-        System.out.printf("Drawing pixel at %d, %d in color %s ", x, y, color);
+        System.out.printf("Drawing pixel at %d, %d in color %s %n", x, y, color);
     }
 
 }
@@ -53,7 +49,9 @@ class Motherboard extends Product {
         this.bios = bios;
     }
 
-
+    public void loadProgram(String programName) {
+        System.out.println(programName + " is running...");
+    }
 
 
 }
