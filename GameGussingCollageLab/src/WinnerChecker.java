@@ -8,7 +8,6 @@ public class WinnerChecker {
         this.winners = winners;
     }
 
-
     private boolean isTeamWinner(String teamName) {
         boolean isExist = false;
         for (int i = 0; i < winners.length; i++) {

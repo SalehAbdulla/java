@@ -1,4 +1,4 @@
-public class Refrigerator {
+public class DishWasher {
     private boolean HasWorkToDo;
 
     public boolean isHasWorkToDo() {
@@ -9,9 +9,8 @@ public class Refrigerator {
         HasWorkToDo = hasWorkToDo;
     }
 
-    public void orderFood() {
+    public void doDishes() {
         this.HasWorkToDo = true;
-        System.out.println("order food executed, here is the food...");
+        System.out.println("doDishes executed, dishes being cleaning...");
     }
-
 }
