@@ -11,7 +11,6 @@ public class LooseCouplingExample {
         MongoDBProvider mongoDBProvider = new MongoDBProvider(databaseProvider);
         UserManager mongoDBProviderManager = new UserManager(mongoDBProvider);
 
-
         System.out.println(dbUserManager.getUserDetails());
         System.out.println(webServiceDataProviderManager.getUserDetails());
         System.out.println(mongoDBProviderManager.getUserDetails());

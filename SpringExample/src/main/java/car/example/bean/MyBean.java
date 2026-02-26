@@ -7,8 +7,7 @@ public class MyBean {
         this.message = message;
     }
 
-
-    public void showMessage() {
+    public void showMessage(){
         System.out.println("Message: " + message);
     }
 
