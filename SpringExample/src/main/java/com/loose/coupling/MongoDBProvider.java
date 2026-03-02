@@ -1,11 +1,6 @@
 package com.loose.coupling;
 
-public class MongoDBProvider implements UserDataProvider{
-    private UserDataProvider userDataProvider;
-
-    public MongoDBProvider(UserDataProvider userDataProvider) {
-        this.userDataProvider = userDataProvider;
-    }
+public class MongoDBProvider implements UserDataProvider {
 
     @Override
     public String getUserInfo() {
