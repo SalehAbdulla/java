@@ -6,11 +6,11 @@
 
     <!-- bean definitions here -->
 
-    <bean id="specification" class="com.example.autowire.name.Specification">
+    <bean id="specification" class="com.example.autowire.type.Specification">
         <property name="model" value="LUXES"/>
         <property name="make" value="LS"/>
     </bean>
 
-    <bean id="myCar" class="com.example.autowire.name.Car" autowire="byName" />
+    <bean id="myCar" class="com.example.autowire.type.Car" autowire="byType" />
 
 </beans>
