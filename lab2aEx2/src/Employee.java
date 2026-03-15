@@ -6,13 +6,10 @@ public class Employee {
     private String lastName;
     private int idNumber;
     private String position;
-
+    private Car car;
 
     public Employee() {
-        this.firstName = "unknown";
-        this.lastName = "unknown";
-        this.idNumber = 222222222;
-        this.position = "stranger";
+      this("unknown", "unknown", 111111111, "unknown", null);
     }
 
     public Employee(String firstName, String lastName, int idNumber, String position) {
@@ -20,6 +17,23 @@ public class Employee {
         this.lastName = lastName;
         this.idNumber = idNumber;
         this.position = position;
+    }
+
+    public Employee(String firstName, String lastName, int idNumber, String position, Car car) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.idNumber = idNumber;
+        this.position = position;
+        this.car = car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+        car.setOwner(this);
+    }
+
+    public Car getCar() {
+        return car;
     }
 
     public void setFirstName(String firstName) {
@@ -65,4 +79,16 @@ public class Employee {
     public void setPosition(String position) {
         this.position = position;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", idNumber=" + idNumber +
+                ", position='" + position + '\'' +
+                ", car=" + car.toString() +
+                '}';
+    }
+
 }
