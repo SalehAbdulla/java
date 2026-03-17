@@ -5,6 +5,30 @@ public class CarsClub {
     private HashMap<Long, Car> cars;
     private long ownersIdCounter;
 
+    public LinkedHashMap<Long, Owner> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(LinkedHashMap<Long, Owner> owners) {
+        this.owners = owners;
+    }
+
+    public HashMap<Long, Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(HashMap<Long, Car> cars) {
+        this.cars = cars;
+    }
+
+    public long getOwnersIdCounter() {
+        return ownersIdCounter;
+    }
+
+    public void setOwnersIdCounter(long ownersIdCounter) {
+        this.ownersIdCounter = ownersIdCounter;
+    }
+
     public CarsClub() {
         this.owners = new LinkedHashMap<>();
         this.cars = new HashMap<>();
