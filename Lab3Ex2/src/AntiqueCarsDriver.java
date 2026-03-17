@@ -1,11 +1,13 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class AntiqueCarsDriver {
 
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        var carsClub = new CarsClub();
 
         System.out.println("\n\n\n\tWelcome to Antique Cars Club, where you see the best cars in the world!\n\n\n");
         boolean isOn = true;
@@ -17,8 +19,7 @@ public class AntiqueCarsDriver {
             switch (userInput) {
                 case 1:
                     // TODO: Add Owner to the system
-                    System.out.println("user choice is 1");
-                    // owner.addOwnerToTheSystem();
+                    carsClub.addOwner();
                     break;
                 case 2:
                     // TODO: Add car to Owners list of cars
@@ -65,11 +66,11 @@ public class AntiqueCarsDriver {
                             5. Organize a test drive of a car
                             6. Exit
                         """);
+                String input = scanner.nextLine();
 
                 try {
-                    userInput = scanner.nextInt();
+                    userInput = Integer.parseInt(input);
                 } catch (InputMismatchException e) {
-                    scanner.next();
                     System.out.println("error: invalid entry, you must insert a number");
                     continue;
                 }

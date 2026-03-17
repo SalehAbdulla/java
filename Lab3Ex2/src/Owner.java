@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Owner {
     private long ownerId;
@@ -6,16 +8,32 @@ public class Owner {
     private String ownerPhone;
     private Car carForSale;
     private Car carForTestDrive;
-    private ArrayList<Car> ownerCars;
+    private HashMap<Long, Car> ownerCars = new HashMap<Long, Car>();
 
-    public Owner(long ownerId, String ownerName, String ownerPhone, Car carForSale, Car carForTestDrive, ArrayList<Car> ownerCars) {
+    public Owner() {
+        this(-1, "unknown", "38383838", null, null);
+    }
+
+    public Owner(long ownerId, String ownerName, String ownerPhone) {
+        this(ownerId, ownerName, ownerPhone, null, null);
+    }
+
+    public Owner(long ownerId, String ownerName, String ownerPhone, Car carForSale, Car carForTestDrive) {
         this.ownerId = ownerId;
         this.ownerName = ownerName;
         this.ownerPhone = ownerPhone;
         this.carForSale = carForSale;
         this.carForTestDrive = carForTestDrive;
+    }
+
+    public HashMap<Long, Car> getOwnerCars() {
+        return ownerCars;
+    }
+
+    public void setOwnerCars(HashMap<Long, Car> ownerCars) {
         this.ownerCars = ownerCars;
     }
+
 
     public long getOwnerId() {
         return ownerId;
@@ -57,11 +75,4 @@ public class Owner {
         this.carForTestDrive = carForTestDrive;
     }
 
-    public ArrayList<Car> getOwnerCars() {
-        return ownerCars;
-    }
-
-    public void setOwnerCars(ArrayList<Car> ownerCars) {
-        this.ownerCars = ownerCars;
-    }
 }

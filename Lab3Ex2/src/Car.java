@@ -1,16 +1,22 @@
 public class Car {
+    private final Long carId;
     private String registration;
     private String make;
     private String model;
     private String year;
     private double mileage;
 
-    public Car(String registration, String make, String model, String year, double mileage) {
+    public Car(Long carId, String registration, String make, String model, String year, double mileage) {
+        this.carId = carId;
         this.registration = registration;
         this.make = make;
         this.model = model;
         this.year = year;
         this.mileage = mileage;
+    }
+
+    public Long getCarId() {
+        return carId;
     }
 
     public String getRegistration() {
