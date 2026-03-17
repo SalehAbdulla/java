@@ -18,7 +18,7 @@ public class Main {
         IntStream
                 .range(1, 10)
                 .skip(5)
-                .forEach(x -> System.out.println(x));
+                .forEach(System.out::println);
         System.out.println();
 
         System.out.println("-".repeat(20));
