@@ -4,34 +4,24 @@ import com.ecommerce.project.model.Category;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-    private List<Category> categories = new ArrayList<>();
-    private Long nextId = 1L;
 
-    @Override
-    public List<Category> getAllCategories() {
-        return categories;
-    }
+    private ArrayList<Category> categories = new ArrayList<>();
+    private long nextCategoryId = 0;
 
-    @Override
-    public void createCategory(Category category) {
-        category.setCategoryId(nextId++);
+    public void createCategory(Category category){
+        category.setCategoryId(nextCategoryId++);
         categories.add(category);
     }
 
-    @Override
-    public String deleteCategory(long categoryId) {
-        Category category = categories.stream()
-                .filter(c -> c.getCategoryId().equals(categoryId))
-                .findFirst().orElse(null);
+    public ArrayList<Category> getCategories(){
+        return categories;
+    }
 
-        if (category == null) return "category not found";
-
-        categories.remove(category);
-        return "Category with categoryId: " + category.getCategoryId() + " deleted.";
+    public void deleteCategory(long categoryId){
+        categories.removeIf(c -> c.getCategoryId() == categoryId);
     }
 
 }
