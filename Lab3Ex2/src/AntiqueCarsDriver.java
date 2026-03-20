@@ -9,11 +9,12 @@ public class AntiqueCarsDriver {
     public static void main(String[] args) {
         var carsClub = new CarsClub();
 
-        System.out.println("\n\n\n\tWelcome to Antique Cars Club, where you see the best cars in the world!\n\n\n");
         boolean isOn = true;
 
         while (isOn) {
+            scanner = new Scanner(System.in); // to empty the buffer after each iteration
 
+            System.out.println("\n\n\n\tWelcome to Antique Cars Club, where you see the best cars in the world!\n\n\n");
             int userInput = getMenu();
 
             switch (userInput) {

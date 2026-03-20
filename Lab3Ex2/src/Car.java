@@ -1,13 +1,12 @@
 public class Car {
-    private final Long carId;
     private String registration;
     private String make;
     private String model;
-    private String year;
+    private int year;
     private double mileage;
+    private Owner owner;
 
-    public Car(Long carId, String registration, String make, String model, String year, double mileage) {
-        this.carId = carId;
+    public Car(String registration, String make, String model, int year, double mileage) {
         this.registration = registration;
         this.make = make;
         this.model = model;
@@ -15,8 +14,12 @@ public class Car {
         this.mileage = mileage;
     }
 
-    public Long getCarId() {
-        return carId;
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public String getRegistration() {
@@ -43,11 +46,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 

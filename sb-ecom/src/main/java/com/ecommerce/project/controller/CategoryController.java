@@ -33,7 +33,6 @@ public class CategoryController {
     @DeleteMapping("/api/admin/delete-category/{categoryId}")
     public void deleteCategory(@PathVariable long categoryId){
         categoryServiceImpl.deleteCategory(categoryId);
-
     }
 
 }

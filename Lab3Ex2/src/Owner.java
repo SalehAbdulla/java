@@ -8,30 +8,25 @@ public class Owner {
     private String ownerPhone;
     private Car carForSale;
     private Car carForTestDrive;
-    private HashMap<Long, Car> ownerCars = new HashMap<Long, Car>();
+    private HashMap<String, Car> ownerCars = new HashMap<String, Car>();
 
-    public Owner() {
-        this(-1, "unknown", "38383838", null, null);
+
+    public Owner(long ownerId, String ownerName, String ownerPhone, Car car) {
+        this(ownerId, ownerName, ownerPhone, null, null, car);
     }
 
-    public Owner(long ownerId, String ownerName, String ownerPhone) {
-        this(ownerId, ownerName, ownerPhone, null, null);
-    }
-
-    public Owner(long ownerId, String ownerName, String ownerPhone, Car carForSale, Car carForTestDrive) {
+    public Owner(long ownerId, String ownerName, String ownerPhone, Car carForSale, Car carForTestDrive, Car car) {
         this.ownerId = ownerId;
         this.ownerName = ownerName;
         this.ownerPhone = ownerPhone;
         this.carForSale = carForSale;
         this.carForTestDrive = carForTestDrive;
+        ownerCars.put(car.getRegistration(), car);
+        car.setOwner(this);
     }
 
-    public HashMap<Long, Car> getOwnerCars() {
+    public HashMap<String, Car> getOwnerCars() {
         return ownerCars;
-    }
-
-    public void setOwnerCars(HashMap<Long, Car> ownerCars) {
-        this.ownerCars = ownerCars;
     }
 
 
@@ -39,9 +34,6 @@ public class Owner {
         return ownerId;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
-    }
 
     public String getOwnerName() {
         return ownerName;
