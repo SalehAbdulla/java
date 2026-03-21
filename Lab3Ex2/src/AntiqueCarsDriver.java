@@ -12,7 +12,7 @@ public class AntiqueCarsDriver {
         boolean isOn = true;
 
         while (isOn) {
-            scanner = new Scanner(System.in); // to empty the buffer after each iteration
+            scanner = new Scanner(System.in); // to reset/empty the buffer after each iteration
 
             System.out.println("\n\n\n\tWelcome to Antique Cars Club, where you see the best cars in the world!\n\n\n");
             int userInput = getMenu();
@@ -25,7 +25,7 @@ public class AntiqueCarsDriver {
                 case 2:
                     // TODO: Add car to Owners list of cars
                     System.out.println("user choice is 2");
-                    // owner.addCarToOwnersList();
+                    // owner.addCarToOwnersList(Long ownerId); <-
                     break;
                 case 3:
                     // TODO: List an owners cars

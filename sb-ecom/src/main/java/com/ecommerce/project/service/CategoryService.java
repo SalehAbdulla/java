@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 public interface CategoryService {
     void createCategory(Category category);
-    void deleteCategory(long categoryId);
+    String deleteCategory(long categoryId);
     ArrayList<Category> getCategories();
 }
