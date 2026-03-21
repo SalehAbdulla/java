@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CategoryController {
 
     @Autowired
@@ -22,19 +23,19 @@ public class CategoryController {
         this.categoryServiceImpl = categoryServiceImpl;
     }
 
-    @GetMapping("/api/public/categories")
+    @GetMapping("/public/categories")
     public ResponseEntity<List<Category>> getCategories() {
         List<Category> categories = categoryServiceImpl.getCategories();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @PostMapping("/api/public/create-category")
+    @PostMapping("/public/create-category")
     public ResponseEntity<String> createCategory(@RequestBody Category category) {
         categoryServiceImpl.createCategory(category);
         return new ResponseEntity<>("Category created Successfully", HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/api/admin/delete-category/{categoryId}")
+    @DeleteMapping("/admin/delete-category/{categoryId}")
     public ResponseEntity<String> deleteCategory(@PathVariable long categoryId){
         try {
             String status = categoryServiceImpl.deleteCategory(categoryId);
@@ -44,7 +45,7 @@ public class CategoryController {
         }
     }
 
-    @PutMapping("/api/admin/update-category/{categoryId}")
+    @PutMapping("/admin/update-category/{categoryId}")
     public ResponseEntity<String> updateCategory(@PathVariable long categoryId, @RequestBody Category category) {
         try {
             String status = categoryServiceImpl.updateCategory(categoryId, category);
