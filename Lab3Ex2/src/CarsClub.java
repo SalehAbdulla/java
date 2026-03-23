@@ -9,7 +9,6 @@ public class CarsClub {
     public CarsClub() {
         this.owners = new LinkedHashMap<>();
         this.cars = new HashMap<>();
-        this.ownersIdCounter = 1;
     }
 
     public void addOwner() {
@@ -19,11 +18,11 @@ public class CarsClub {
         // to add the user, thus, we're going to ask for car information as well here
         System.out.println("Hi, " + userName +", \nTo be a member of our club, you must at least have 1 classic car, please provide us with the following.");
 
-        // I THINK ASKING THE USER IF HE HAS A CAR OR NOT, IF YES WE PROCEED - STILL NOT IMPLEMENTED
+        // I THINK ASKING THE USER IF HE HAS A CAR OR NOT, IF YES WE PROCEED, NOT RETURN - STILL NOT IMPLEMENTED
         Car ownerCar = promptUserToAddCar();
 
-        ownersIdCounter++;
         long newId = ownersIdCounter + 1L;
+        ownersIdCounter++;
 
         Owner newOwner = new Owner(newId , userName, userPhoneNumber, ownerCar);
         owners.put(newId, newOwner);
@@ -146,11 +145,14 @@ public class CarsClub {
     }
 
     public void printAllOwnersInfo(){
+        if (owners.isEmpty()) {
+            System.out.println("Warning: no user registered yet!");
+        }
         for (Map.Entry<Long, Owner> entry : owners.entrySet()) {
             System.out.println("\n\n======= Here is the details registered for " + entry.getValue().getOwnerName() + ": ======= \n");
             System.out.println("ID: " +  entry.getValue().getOwnerId());
             System.out.println("NAME: " + entry.getValue().getOwnerName());
-            System.out.println("PHONE: " +  entry.getValue().getOwnerName());
+            System.out.println("PHONE: " +  entry.getValue().getOwnerPhone());
             System.out.println("Owners Cars: ");
             for (Map.Entry<String, Car> carEntry : entry.getValue().getOwnerCars().entrySet()) {
                 System.out.println("Car Brand: " + carEntry.getValue().getMake() + " | Car Model: " + carEntry.getValue().getModel() + " | Year: " + carEntry.getValue().getYear());
@@ -163,6 +165,12 @@ public class CarsClub {
         Car userCar = promptUserToAddCar();
         Owner getOwner = owners.get(ownerId);
         if (getOwner != null) {
+            Optional<String> optionalCar = getOwner
+                    .getOwnerCars().entrySet().stream()
+                    .filter(c -> c.getValue().getRegistration().equals(userCar.getRegistration())).findFirst().get().getValue().getRegistration().describeConstable();
+            if (optionalCar.isPresent()) {
+                System.out.println("Warning: This car registration is already exists, we will over write the information");
+            }
             getOwner.addCarToOwnerCarsList(userCar);
         } else {
             System.out.println("invalid owner id, please try again");
@@ -177,6 +185,13 @@ public class CarsClub {
             System.out.println("You cannot add a car without an owner, please add owners to the list first!");
             return;
         }
+
+        System.out.println("\n======= OWNERS LIST =======");
+        for (Map.Entry<Long, Owner> owner : owners.entrySet()){
+            System.out.println("OWNER ID: " + owner.getValue().getOwnerId() + " OWNER NAME: " + owner.getValue().getOwnerName());
+        }
+
+        System.out.println("-".repeat(20));
 
         if (AntiqueCarsDriver.savedOwnerId != 0) {
             System.out.println("HERE IS THE owner id saved in the system, you could use it!\t\t\t OWNER ID: ".toUpperCase() + AntiqueCarsDriver.savedOwnerId);
@@ -193,7 +208,11 @@ public class CarsClub {
             }
         } while(ownerId == 0);
 
-
+        Owner getOwner = owners.get(ownerId);
+        if (getOwner == null) {
+            System.out.println("invalid owner id, please try again");
+            return;
+        }
         addCarToOwnerList(ownerId);
     }
 

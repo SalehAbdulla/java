@@ -32,7 +32,6 @@ public class AntiqueCarsDriver {
                     break;
                 case 3:
                     // TODO: List an owners cars
-                    System.out.println("user choice is 3");
                     // owner.listOwnersCars;
                     carsClub.printAllOwnersInfo();
                     break;
