@@ -19,7 +19,7 @@ public class CarsClub {
         // to add the user, thus, we're going to ask for car information as well here
         System.out.println("Hi, " + userName +", \nTo be a member of our club, you must at least have 1 classic car, please provide us with the following.");
 
-        // I THINK ASKING THE USER IF HE HAS A CAR OR NOT, IF YES WE PROCEED
+        // I THINK ASKING THE USER IF HE HAS A CAR OR NOT, IF YES WE PROCEED - STILL NOT IMPLEMENTED
         Car ownerCar = promptUserToAddCar();
 
         ownersIdCounter++;
@@ -35,6 +35,7 @@ public class CarsClub {
         System.out.println("Phone: " +  newOwner.getOwnerPhone());
         System.out.println("Car Brand: " + ownerCar.getMake() + " | Car Model: " + ownerCar.getModel() + " | Year: " + ownerCar.getYear());
         System.out.println("-".repeat(20));
+        AntiqueCarsDriver.savedOwnerId = newId;
     }
 
     private Car promptUserToAddCar(){
@@ -156,6 +157,44 @@ public class CarsClub {
             }
             System.out.println("-".repeat(20));
         }
+    }
+
+    private void addCarToOwnerList(Long ownerId) {
+        Car userCar = promptUserToAddCar();
+        Owner getOwner = owners.get(ownerId);
+        if (getOwner != null) {
+            getOwner.addCarToOwnerCarsList(userCar);
+        } else {
+            System.out.println("invalid owner id, please try again");
+            return;
+        }
+        System.out.println("A car added successfully to owner name: " + getOwner.getOwnerName());
+    }
+
+    public void addCarToOwnerList() {
+
+        if (owners.isEmpty()) {
+            System.out.println("You cannot add a car without an owner, please add owners to the list first!");
+            return;
+        }
+
+        if (AntiqueCarsDriver.savedOwnerId != 0) {
+            System.out.println("HERE IS THE owner id saved in the system, you could use it!\t\t\t OWNER ID: ".toUpperCase() + AntiqueCarsDriver.savedOwnerId);
+        }
+
+        System.out.println("Please insert the owner id you would like to assign the car to");
+
+        long ownerId = 0L;
+        do {
+            try {
+                ownerId = Long.parseLong(AntiqueCarsDriver.scanner.next());
+            } catch (NumberFormatException e) {
+                System.out.println("owner Id must be a number please re-insert the owner id");
+            }
+        } while(ownerId == 0);
+
+
+        addCarToOwnerList(ownerId);
     }
 
 }

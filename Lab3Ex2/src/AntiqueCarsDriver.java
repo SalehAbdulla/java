@@ -5,6 +5,10 @@ import java.util.logging.Logger;
 public class AntiqueCarsDriver {
 
     public static Scanner scanner = new Scanner(System.in);
+    public static long savedOwnerId = 0L;
+
+    // We can keep track of last owner if needed
+
 
     public static void main(String[] args) {
         var carsClub = new CarsClub();
@@ -24,13 +28,13 @@ public class AntiqueCarsDriver {
                     break;
                 case 2:
                     // TODO: Add car to Owners list of cars
-                    System.out.println("user choice is 2");
-                    // owner.addCarToOwnersList(Long ownerId); <-
+                    carsClub.addCarToOwnerList();
                     break;
                 case 3:
                     // TODO: List an owners cars
                     System.out.println("user choice is 3");
                     // owner.listOwnersCars;
+                    carsClub.printAllOwnersInfo();
                     break;
                 case 4:
                     // TODO: Set car for sale

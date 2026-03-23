@@ -15,6 +15,14 @@ public class Owner {
         this(ownerId, ownerName, ownerPhone, null, null, car);
     }
 
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public void addCarToOwnerCarsList(Car newCar) {
+        ownerCars.put(newCar.getRegistration(), newCar);
+    }
+
     public Owner(long ownerId, String ownerName, String ownerPhone, Car carForSale, Car carForTestDrive, Car car) {
         this.ownerId = ownerId;
         this.ownerName = ownerName;
