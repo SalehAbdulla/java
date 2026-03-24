@@ -37,8 +37,7 @@ public class AntiqueCarsDriver {
                     break;
                 case 5:
                     // TODO: Organize a test drive of a car
-                    System.out.println("user choice is 5");
-                    // owner.setCarForTestDrive();
+                    carsClub.setCarForTestDrive();
                     break;
                 case 6:
                     System.out.println("Thank you, exiting...");
