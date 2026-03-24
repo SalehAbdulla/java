@@ -34,7 +34,6 @@ public class CarsClub {
         System.out.println("Phone: " +  newOwner.getOwnerPhone());
         System.out.println("Car Brand: " + ownerCar.getMake() + " | Car Model: " + ownerCar.getModel() + " | Year: " + ownerCar.getYear());
         System.out.println("-".repeat(20));
-        AntiqueCarsDriver.savedOwnerId = newId;
     }
 
     private Car promptUserToAddCar(){
@@ -106,6 +105,18 @@ public class CarsClub {
 
         return new Car(registration, make, model, year, mileage);
 
+    }
+
+    private Long promptOwnerId(){
+        long ownerId = 0L;
+        do {
+            try {
+                ownerId = Long.parseLong(AntiqueCarsDriver.scanner.next());
+            } catch (NumberFormatException e) {
+                System.out.println("owner Id must be a number please re-insert the owner id");
+            }
+        } while(ownerId == 0);
+        return ownerId;
     }
 
     private String promptUsersName() {
@@ -181,9 +192,54 @@ public class CarsClub {
 
     public void addCarToOwnerList() {
 
+        boolean checkAndPrintOwners = checkAndPrintOwners();
+        if (!checkAndPrintOwners) return;
+
+        System.out.println("Please insert the owner id you would like to assign the car to");
+
+        Long ownerId = promptOwnerId();
+
+        Owner getOwner = owners.get(ownerId);
+
+        if (getOwner == null) {
+            System.out.println("invalid owner id, please try again");
+            return;
+        }
+
+        addCarToOwnerList(ownerId);
+
+
+    }
+
+
+    private void setCarForSale(Long OwnerId, Car car) {
+//        owners.entrySet().stream().findFirst().get().getValue().setCarForSale(car);
+    }
+
+
+    public void setCarForSale() {
+        boolean checkAndPrintOwners = checkAndPrintOwners();
+        if (!checkAndPrintOwners) return;
+
+        Long ownerId = promptOwnerId();
+        if (owners.get(ownerId) == null) {
+            System.out.println("invalid owner id, please try again");
+            return;
+        }
+
+        // prompt the user for a car to be sold
+        // car must be registered already, and with ownership!
+
+        
+
+//        setCarForSale(ownerId, car);
+    }
+
+
+    public boolean checkAndPrintOwners(){
         if (owners.isEmpty()) {
             System.out.println("You cannot add a car without an owner, please add owners to the list first!");
-            return;
+            return false;
         }
 
         System.out.println("\n======= OWNERS LIST =======");
@@ -192,28 +248,9 @@ public class CarsClub {
         }
 
         System.out.println("-".repeat(20));
-
-        if (AntiqueCarsDriver.savedOwnerId != 0) {
-            System.out.println("HERE IS THE owner id saved in the system, you could use it!\t\t\t OWNER ID: ".toUpperCase() + AntiqueCarsDriver.savedOwnerId);
-        }
-
-        System.out.println("Please insert the owner id you would like to assign the car to");
-
-        long ownerId = 0L;
-        do {
-            try {
-                ownerId = Long.parseLong(AntiqueCarsDriver.scanner.next());
-            } catch (NumberFormatException e) {
-                System.out.println("owner Id must be a number please re-insert the owner id");
-            }
-        } while(ownerId == 0);
-
-        Owner getOwner = owners.get(ownerId);
-        if (getOwner == null) {
-            System.out.println("invalid owner id, please try again");
-            return;
-        }
-        addCarToOwnerList(ownerId);
+        return true;
     }
+
+
 
 }

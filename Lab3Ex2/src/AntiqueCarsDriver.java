@@ -5,10 +5,6 @@ import java.util.logging.Logger;
 public class AntiqueCarsDriver {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static long savedOwnerId = 0L;
-
-    // We can keep track of last owner if needed
-
 
     public static void main(String[] args) {
         var carsClub = new CarsClub();
@@ -38,7 +34,7 @@ public class AntiqueCarsDriver {
                 case 4:
                     // TODO: Set car for sale
                     System.out.println("user choice is 4");
-                    // owner.setCarForSale();
+                    carsClub.setCarForSale();
                     break;
                 case 5:
                     // TODO: Organize a test drive of a car
