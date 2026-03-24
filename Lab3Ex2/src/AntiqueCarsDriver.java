@@ -33,7 +33,6 @@ public class AntiqueCarsDriver {
                     break;
                 case 4:
                     // TODO: Set car for sale
-                    System.out.println("user choice is 4");
                     carsClub.setCarForSale();
                     break;
                 case 5:
@@ -42,7 +41,6 @@ public class AntiqueCarsDriver {
                     // owner.setCarForTestDrive();
                     break;
                 case 6:
-                    System.out.println("user choice is 6");
                     System.out.println("Thank you, exiting...");
                     isOn = false;
                     break;
@@ -73,6 +71,8 @@ public class AntiqueCarsDriver {
                 } catch (InputMismatchException e) {
                     System.out.println("error: invalid entry, you must insert a number");
                     continue;
+                } catch (Exception e) {
+                    System.out.println("error: something went wrong");
                 }
 
                 if (userInput < 1 || userInput > 6) {

@@ -7,11 +7,15 @@ public class Car {
     private Owner owner;
 
     public Car(String registration, String make, String model, int year, double mileage) {
-        this.registration = registration;
+        this.registration = registration.toLowerCase();
         this.make = make;
         this.model = model;
         this.year = year;
         this.mileage = mileage;
+    }
+
+    public Car() {
+        // JUST TO PASS SOME CONDITION
     }
 
     public Owner getOwner() {

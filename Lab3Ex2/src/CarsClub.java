@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.time.Year;
 import java.util.*;
 
@@ -32,7 +33,10 @@ public class CarsClub {
         System.out.println("======= Here is the detail registered: ======= \n");
         System.out.println("Name: " + newOwner.getOwnerName());
         System.out.println("Phone: " +  newOwner.getOwnerPhone());
-        System.out.println("Car Brand: " + ownerCar.getMake() + " | Car Model: " + ownerCar.getModel() + " | Year: " + ownerCar.getYear());
+        System.out.println("Car for sale: " +  (newOwner.getCarForSale() == null ? "not assigned": newOwner.getCarForSale().getRegistration()));
+        System.out.println("Car for test drive: " +  (newOwner.getCarForTestDrive() == null ? "not assigned": newOwner.getCarForTestDrive().getRegistration()));
+        System.out.println("Phone: " +  newOwner.getOwnerPhone());
+        System.out.println("Car Registration: "+ ownerCar.getRegistration() + "| Car Brand: " + ownerCar.getMake() + " | Car Model: " + ownerCar.getModel() + " | Year: " + ownerCar.getYear());
         System.out.println("-".repeat(20));
     }
 
@@ -164,11 +168,14 @@ public class CarsClub {
             System.out.println("ID: " +  entry.getValue().getOwnerId());
             System.out.println("NAME: " + entry.getValue().getOwnerName());
             System.out.println("PHONE: " +  entry.getValue().getOwnerPhone());
-            System.out.println("Owners Cars: ");
+            System.out.println("CAR FOR SALE: " +  entry.getValue().getCarForSale());
+            System.out.println("CAR FOR TEST DRIVE: " +  entry.getValue().getCarForTestDrive());
+
+            System.out.println("\n\n======= Here is the details registered Owners Cars for " + entry.getValue().getOwnerName() + ": ======= \n");
             for (Map.Entry<String, Car> carEntry : entry.getValue().getOwnerCars().entrySet()) {
                 System.out.println("Car Brand: " + carEntry.getValue().getMake() + " | Car Model: " + carEntry.getValue().getModel() + " | Year: " + carEntry.getValue().getYear());
             }
-            System.out.println("-".repeat(20));
+            System.out.println("\n\n\n" + "-".repeat(20));
         }
     }
 
@@ -212,17 +219,32 @@ public class CarsClub {
     }
 
 
-    private void setCarForSale(Long OwnerId, Car car) {
-//        owners.entrySet().stream().findFirst().get().getValue().setCarForSale(car);
+    private void setCarForSale(Long ownerId, Car car) {
+        Optional<Map.Entry<Long, Owner>> owner = owners.entrySet().stream().filter(o -> o.getValue().getOwnerId() == ownerId).findFirst();
+        owner.ifPresent(longOwnerEntry -> longOwnerEntry.getValue().setCarForSale(car));
+        System.out.println("Car with registration id: " + car.getRegistration() + " placed to be car for sale");
     }
 
 
     public void setCarForSale() {
+
+        if (owners.isEmpty()) {
+            System.out.println("owners list is empty, please insert a new member first");
+            return;
+        }
+
+
+        System.out.println("please select the owner you would like to assign the car for sale to - " +
+                "please note that the owner must have ownership to the car to assign the car to sale");
+
+
         boolean checkAndPrintOwners = checkAndPrintOwners();
         if (!checkAndPrintOwners) return;
 
         Long ownerId = promptOwnerId();
-        if (owners.get(ownerId) == null) {
+        Owner owner = owners.get(ownerId);
+
+        if (owner == null) {
             System.out.println("invalid owner id, please try again");
             return;
         }
@@ -230,9 +252,63 @@ public class CarsClub {
         // prompt the user for a car to be sold
         // car must be registered already, and with ownership!
 
-        
+        // does this guy has a car ?
+        if (owner.getOwnerCars().isEmpty()) {
+            System.out.println("This owner does not have any car".toUpperCase());
+            System.out.println("WARNING: ALL OWNERS MUST HAVE A CAR!!! HOW THIS OWNER BECOME A MEMBER!");
+        }
 
-//        setCarForSale(ownerId, car);
+        System.out.println("HERE IS THE OWNER'S INFORMATION, INCLUDING HIS CARS - PLEASE SELECT ONE OF THOSE CARS \n\t\t\t\tPROVIDE THE REGISTRATION ID OF THE CAR YOU WOULD LIKE TO PLACE IT TO BE CAR FOR SALE\n\n");
+        printOwnerInfo(ownerId);
+
+        System.out.println("=".repeat(20));
+
+        String carReg = "";
+        Car carToBeSold = new Car();
+
+        // is this carReg valid ?
+        do {
+            carReg = AntiqueCarsDriver.scanner.next().trim().toUpperCase();
+            System.out.println("Please select the registration id of the car to be sold: ");
+            if (carReg.isBlank()) {
+                System.out.println("registration id cannot be empty, please try again");
+            }
+
+            final String carRegFinal = carReg;
+
+            Optional<Map.Entry<String, Car>> car = owner.getOwnerCars().entrySet().stream().filter(c -> c.getValue().getRegistration().equals(carRegFinal)).findFirst();
+            if (car.isPresent()) {
+                carToBeSold = car.get().getValue();
+            } else {
+                System.out.println("cannot find this car, please try again");
+                carReg = "";
+            }
+        } while (carReg.isEmpty());
+
+        setCarForSale(ownerId, carToBeSold);
+
+    }
+
+    public void printOwnerInfo(Long ownerId) {
+        Owner entry = owners.get(ownerId);
+        if (entry == null) {
+            System.out.println("invalid owner id");
+            return;
+        }
+
+        System.out.println("\n\n======= Here is the details registered for " + entry.getOwnerName() + ": ======= \n");
+        System.out.println("ID: " +  entry.getOwnerId());
+        System.out.println("NAME: " + entry.getOwnerName());
+        System.out.println("PHONE: " +  entry.getOwnerPhone());
+        System.out.println("CAR FOR SALE: " +  entry.getCarForSale());
+        System.out.println("CAR FOR TEST DRIVE: " +  entry.getCarForTestDrive());
+        System.out.println("Owners Cars: ");
+
+        System.out.println("\n\n======= Here is the details owners cars for " + entry.getOwnerName() + ": ======= \n");
+        for (Map.Entry<String, Car> carEntry : entry.getOwnerCars().entrySet()) {
+            System.out.println("Car Registration: "+ carEntry.getValue().getRegistration() + " | Car Brand: " + carEntry.getValue().getMake() + " | Car Model: " + carEntry.getValue().getModel() + " | Year: " + carEntry.getValue().getYear());
+        }
+        System.out.println("-".repeat(20));
     }
 
 
