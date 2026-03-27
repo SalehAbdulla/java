@@ -1,6 +1,8 @@
 package com.ecommerce.project.service;
 
+import com.ecommerce.project.Repository.CategoryRepository;
 import com.ecommerce.project.model.Category;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
@@ -13,34 +15,37 @@ import java.util.Optional;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-    List<Category> categories = new ArrayList<>();
-    Long categoryCounter = 0L;
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+//    List<Category> categories = new ArrayList<>();
 
     @Override
     public List<Category> getAllCategories() {
-        return categories;
+        return categoryRepository.findAll();
     }
 
     @Override
     public void createCategory(Category category) {
-        category.setCategoryId(categoryCounter++);
-        categories.add(category);
+        categoryRepository.save(category);
     }
 
     @Override
     public String deleteCategory(long categoryId) {
-        Category category = categories.stream().filter(c -> c.getCategoryId() == categoryId).findFirst()
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "resource not found"));
-        categories.remove(category);
+        Category savedCategory = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "resourse not found"));
+        categoryRepository.delete(savedCategory);
+
         return "category with id: " + categoryId + " deleted successfully";
     }
 
     @Override
-    public String updateCategory(Category category, long categoryId) {
-        Category foundCategory = categories.stream().filter(c -> c.getCategoryId() == categoryId).findFirst()
-                    .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "category not found"));
-        foundCategory.setCategoryName(category.getCategoryName());
-        return "category with category id: " + categoryId + " updated successfully";
+    public Category updateCategory(Category category, long categoryId) {
+        Category savedCategory = categoryRepository.findById(categoryId)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "category not found"));
+        category.setCategoryId(categoryId); // in case user passed wrong id in the body
+        savedCategory = categoryRepository.save(savedCategory);
+        return savedCategory;
     }
 
 }
