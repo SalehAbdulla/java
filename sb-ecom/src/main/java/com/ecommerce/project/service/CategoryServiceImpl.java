@@ -15,7 +15,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 //    private ArrayList<Category> categories = new ArrayList<>();
 
-    private long nextCategoryId = 0L;
+//    private long nextCategoryId = 0L;
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -27,7 +27,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void createCategory(Category category){
-        category.setCategoryId(nextCategoryId++);
         categoryRepository.save(category);
     }
 
@@ -42,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         categoryRepository.delete(category);
 
-        return "Category with category id " + categoryId + " deleted successfuly";
+        return "Category with category id " + categoryId + " deleted successfully";
     }
 
     @Override
@@ -56,7 +55,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         if (categoryOptional.isPresent()) {
             Category existedCategory = categoryOptional.get();
-            categoryRepository.save(existedCategory);
+            categoryRepository.saveAndFlush(existedCategory);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "CATEGORY NOT FOUND");
         }
