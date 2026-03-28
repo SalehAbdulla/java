@@ -3,6 +3,7 @@ package com.ecommerce.project.controller;
 import com.ecommerce.project.model.Category;
 import com.ecommerce.project.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,12 +44,12 @@ public class CategoryController {
     }
 
     @PutMapping("/admin/update-category/{categoryId}")
-    public ResponseEntity<String> updateCategory(@RequestBody Category category, @PathVariable long categoryId) {
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category, @PathVariable long categoryId) {
         try {
-            Category status = categoryService.updateCategory(category, categoryId);
-            return new ResponseEntity<>(status.getCategoryName(), HttpStatus.OK);
+            Category updatedCategory = categoryService.updateCategory(category, categoryId);
+            return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
         } catch (ResponseStatusException e) {
-            return new ResponseEntity<>(e.getReason(), e.getStatusCode());
+            return new ResponseEntity<>((HttpHeaders) null, e.getStatusCode());
         }
     }
 
