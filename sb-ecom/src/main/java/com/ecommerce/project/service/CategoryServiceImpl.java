@@ -15,16 +15,16 @@ import java.util.Optional;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-//    private ArrayList<Category> categories = new ArrayList<>();
-
-//    private long nextCategoryId = 0L;
-
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Override
     public List<Category> getCategories(){
-        return categoryRepository.findAll();
+        List<Category> getAllCategories = categoryRepository.findAll();
+        if (getAllCategories.isEmpty()) {
+            throw new ApiException("categories list is empty!");
+        }
+        return getAllCategories;
     }
 
     @Override
