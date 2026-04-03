@@ -1,9 +1,9 @@
 import lombok.NonNull;
 
 public class Admin extends FullTimeTutor {
-    private final double adminBounce = 0.2;
+    private final double ADMIN_BOUNCE = 0.2;
 
-    public Admin(@NonNull int staffId, @NonNull String address, @NonNull int phoneNumber, @NonNull boolean isPhDHolder, @NonNull boolean isMasterHolder) {
-        super(staffId, address, phoneNumber, isPhDHolder, isMasterHolder);
+    public Admin(int staffId, String name, String address, int phoneNumber, boolean isPhDHolder, boolean isMasterHolder, double annualSalary) {
+        super(staffId, name, address, phoneNumber, isPhDHolder, isMasterHolder, annualSalary);
     }
 }

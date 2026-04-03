@@ -7,6 +7,8 @@ public class Employee {
     @NonNull
     private int staffId;
     @NonNull
+    private String name;
+    @NonNull
     private String address;
     @NonNull
     private int phoneNumber;
@@ -16,9 +18,10 @@ public class Employee {
     private boolean isMasterHolder;
     private double extraSalary = 0;
 
-    public Employee(int staffId, String address, int phoneNumber,
+    public Employee(int staffId, String name ,String address, int phoneNumber,
                     boolean isPhDHolder, boolean isMasterHolder) {
         this.staffId = staffId;
+        this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.isPhDHolder = isPhDHolder;
