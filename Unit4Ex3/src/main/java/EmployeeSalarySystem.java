@@ -23,7 +23,7 @@ public class EmployeeSalarySystem {
                 break;
             //TODO 2. Record monthly hours for part time tutor
             case 2:
-//                recordMonthlyHoursForPartTimeTutor();
+                recordMonthlyHoursForPartTimeTutor();
                 break;
             //TODO 3. Print monthly salary report
             case 3:
@@ -109,6 +109,116 @@ public class EmployeeSalarySystem {
                 System.out.println("invalid entry, addEmployeeToTheSystem()");
                 exit(1);
         }
+        System.out.println("new employee added successfully");
+    }
+
+    private void recordMonthlyHoursForPartTimeTutor() {
+        long employeeId = promptEmployeeId();
+
+        Employee foundEmployee = null;
+        for (Employee employee : employees) {
+            if (employee.getStaffId() == employeeId) {
+                foundEmployee = employee;
+                break;
+            }
+        }
+
+        if (foundEmployee == null) {
+            System.out.println("No employee found with ID: " + employeeId);
+            return;
+        }
+
+        if (!(foundEmployee instanceof PartTimeTutor)) {
+            System.out.println("Employee with ID " + employeeId + " is not a Part Time Tutor.");
+            return;
+        }
+
+        PartTimeTutor partTimeTutor = (PartTimeTutor) foundEmployee;
+
+        int year = promptYear();
+        int month = promptMonth();
+        double hoursWorked = promptHoursWorked();
+
+        PartTimeRecord record = new PartTimeRecord(year, month, hoursWorked);
+        partTimeTutor.getNumberOfHoursList().add(record);
+
+        System.out.println("Monthly hours recorded successfully for " + partTimeTutor.getName());
+    }
+
+    private long promptEmployeeId() {
+        long employeeId = 0;
+        boolean valid = false;
+        do {
+            System.out.println("Enter employee ID:");
+            try {
+                employeeId = Long.parseLong(scanner.next());
+                if (employeeId <= 0) {
+                    System.out.println("Invalid entry: Employee ID must be greater than 0.");
+                } else {
+                    valid = true;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid entry: Employee ID must be a valid number.");
+            }
+        } while (!valid);
+        return employeeId;
+    }
+
+    private int promptYear() {
+        int year = 0;
+        boolean valid = false;
+        do {
+            System.out.println("Enter year:");
+            try {
+                year = Integer.parseInt(scanner.next());
+                if (year < 1990 || year > 2026) {
+                    System.out.println("Invalid entry: Please enter a valid year between 1990 and 2026.");
+                } else {
+                    valid = true;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid entry: Year must be a valid number.");
+            }
+        } while (!valid);
+        return year;
+    }
+
+    private int promptMonth() {
+        int month = 0;
+        boolean valid = false;
+        do {
+            System.out.println("Enter month (1-12):");
+            try {
+                month = Integer.parseInt(scanner.next());
+                if (month < 1 || month > 12) {
+                    System.out.println("Invalid entry: Month must be between 1 and 12.");
+                } else {
+                    valid = true;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid entry: Month must be a valid number.");
+            }
+        } while (!valid);
+        return month;
+    }
+
+    private double promptHoursWorked() {
+        double hoursWorked = 0;
+        boolean valid = false;
+        do {
+            System.out.println("Enter number of hours worked this month:");
+            try {
+                hoursWorked = Double.parseDouble(scanner.next());
+                if (hoursWorked <= 0) {
+                    System.out.println("Invalid entry: Hours worked must be greater than 0.");
+                } else {
+                    valid = true;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid entry: Hours worked must be a valid number.");
+            }
+        } while (!valid);
+        return hoursWorked;
     }
 
     private String promptName() {
@@ -126,8 +236,8 @@ public class EmployeeSalarySystem {
     private String promptAddress() {
         String address = "";
         do {
-            System.out.println("Enter employee address:");
-            address = scanner.nextLine().trim();
+            System.out.println("Enter employee address: (spaces are not allowed, use '-' instead for separation)");
+            address = scanner.next().trim();
             if (address.isEmpty()) {
                 System.out.println("Invalid entry: Address cannot be empty.");
             }
