@@ -8,10 +8,9 @@ public class PartTimeTutor extends Employee {
     private double hourlyRate;
     private ArrayList<PartTimeRecord> numberOfHoursList = new ArrayList<>();
 
-    public PartTimeTutor(int staffId, String name, String address, int phoneNumber, boolean isPhDHolder, boolean isMasterHolder, double monthlySalary, double hourlyRate, ArrayList<PartTimeRecord> numberOfHoursList) {
+    public PartTimeTutor(long staffId, String name, String address, int phoneNumber, boolean isPhDHolder, boolean isMasterHolder, double monthlySalary, double hourlyRate) {
         super(staffId, name, address, phoneNumber, isPhDHolder, isMasterHolder);
         this.monthlySalary = monthlySalary;
         this.hourlyRate = hourlyRate;
-        this.numberOfHoursList = numberOfHoursList;
     }
 }

@@ -1,6 +1,7 @@
 package com.ecommerce.project.service;
 
 import com.ecommerce.project.Repository.CategoryRepository;
+import com.ecommerce.project.exceptions.myNotFoundException;
 import com.ecommerce.project.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category updateCategory(Category category, long categoryId) {
         Category savedCategory = categoryRepository.findById(categoryId)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "category not found"));
+                .orElseThrow(()-> new myNotFoundException(category.getCategoryName(), category.getCategoryName(), category.getCategoryId());
         category.setCategoryId(categoryId); // in case user passed wrong id in the body
         savedCategory = categoryRepository.save(savedCategory);
         return savedCategory;

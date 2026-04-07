@@ -7,7 +7,7 @@ import lombok.NonNull;
 public class FullTimeTutor extends Employee {
     private double annualSalary;
 
-    public FullTimeTutor(int staffId, String name, String address, int phoneNumber, boolean isPhDHolder, boolean isMasterHolder, double annualSalary) {
+    public FullTimeTutor(long staffId, String name, String address, int phoneNumber, boolean isPhDHolder, boolean isMasterHolder, double annualSalary) {
         super(staffId, name, address, phoneNumber, isPhDHolder, isMasterHolder);
         this.annualSalary = annualSalary;
     }

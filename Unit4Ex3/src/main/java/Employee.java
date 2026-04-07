@@ -5,7 +5,7 @@ import lombok.NonNull;
 @Data
 public class Employee {
     @NonNull
-    private int staffId;
+    private long staffId;
     @NonNull
     private String name;
     @NonNull
@@ -16,9 +16,10 @@ public class Employee {
     private boolean isPhDHolder;
     @NonNull
     private boolean isMasterHolder;
+
     private double extraSalary = 0;
 
-    public Employee(int staffId, String name ,String address, int phoneNumber,
+    public Employee(long staffId, String name ,String address, int phoneNumber,
                     boolean isPhDHolder, boolean isMasterHolder) {
         this.staffId = staffId;
         this.name = name;
