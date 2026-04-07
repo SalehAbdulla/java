@@ -11,4 +11,8 @@ public class FullTimeTutor extends Employee {
         super(staffId, name, address, phoneNumber, isPhDHolder, isMasterHolder);
         this.annualSalary = annualSalary;
     }
+
+    public double calcMonthlySalary() {
+        return annualSalary / 12;
+    }
 }

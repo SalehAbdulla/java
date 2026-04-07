@@ -1,6 +1,7 @@
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,26 +14,16 @@ public class EmployeeSalarySystem {
     private ArrayList<Employee> employees = new ArrayList<>();
     private long staffCounter = 1L;
 
-    public void startApp(){
-        int getUserChoice = mainMenu();
-
-        switch (getUserChoice) {
-            case 1:
-                addEmployeeToTheSystem();
-                break;
-            case 2:
-                recordMonthlyHoursForPartTimeTutor();
-                break;
-            case 3:
-                printMonthlySalaryReport();
-                break;
-            //TODO 4. Print part time tutor monthly salary history
-            case 4:
-//                printPartTimeTutorMonthlySalaryHistory();
-                break;
-            //TODO 5. Exit
-            default:
-                exit(0);
+    public void startApp() {
+        while (true) {
+            int getUserChoice = mainMenu();
+            switch (getUserChoice) {
+                case 1 -> addEmployeeToTheSystem();
+                case 2 -> recordMonthlyHoursForPartTimeTutor();
+                case 3 -> printMonthlySalaryReport();
+                case 4 -> printPartTimeTutorMonthlySalaryHistory();
+                default -> exit(0);
+            }
         }
     }
 
@@ -67,9 +58,8 @@ public class EmployeeSalarySystem {
         }
 
         for (PartTimeRecord record : partTimeTutor.getNumberOfHoursList()) {
-            double monthlySalary = partTimeTutor.getMonthlySalary()
-                    + (partTimeTutor.getMonthlySalary() * partTimeTutor.getExtraSalary())
-                    + (record.getNumberOfHoursWorkedAMonth() * partTimeTutor.getHourlyRate());
+            double monthlySalary = partTimeTutor.getHourlyRate()
+                    * record.getNumberOfHoursWorkedAMonth();
 
             System.out.println("---------------------------------------------------");
             System.out.println("Year:           " + record.getYear());
@@ -80,6 +70,7 @@ public class EmployeeSalarySystem {
 
         System.out.println("====================================================");
     }
+
     private void printMonthlySalaryReport() {
         if (employees.isEmpty()) {
             System.out.println("No employees found in the system.");
@@ -104,16 +95,11 @@ public class EmployeeSalarySystem {
 
     private double calculateMonthlySalary(Employee employee) {
         if (employee instanceof Admin admin) {
-            double baseMonthly = admin.getAnnualSalary() / 12;
-            return baseMonthly + (baseMonthly * admin.getExtraSalary()) + (baseMonthly * admin.getADMIN_BOUNCE());
-
+            return admin.calcMonthlySalary();
         } else if (employee instanceof SalariedTutor salariedTutor) {
-            double baseMonthly = salariedTutor.getAnnualSalary() / 12;
-            return baseMonthly + (baseMonthly * salariedTutor.getExtraSalary());
-
+            return salariedTutor.calcMonthlySalary();
         } else if (employee instanceof PartTimeTutor partTimeTutor) {
-            return partTimeTutor.getMonthlySalary() + (partTimeTutor.getMonthlySalary() * partTimeTutor.getExtraSalary());
-
+            return partTimeTutor.calcMonthlySalary();
         } else {
             return 0;
         }
@@ -143,7 +129,8 @@ public class EmployeeSalarySystem {
         boolean isPhDHolder;
         boolean isMasterHolder;
         double annualSalary;
-
+        // Admin requirements
+        boolean hasAdditionalDuty;
         // Part Time Additional requirements
         double monthlySalary;
         double hourlyRate;
@@ -152,14 +139,15 @@ public class EmployeeSalarySystem {
 
         switch (userChoice) {
             case 1:
-                // TODO: CREATE ADMIN
                 name = promptName();
                 address = promptAddress();
                 phoneNumber = promptPhoneNumber();
                 isPhDHolder = promptIsPhDHolder();
                 isMasterHolder = promptIsMasterHolder();
                 annualSalary = promptAnnualSalary();
-                newEmployee = new Admin(staffCounter++, name, address, phoneNumber, isPhDHolder, isMasterHolder, annualSalary);
+                hasAdditionalDuty = promptHasAdditionalDuty();
+                newEmployee = new Admin(staffCounter++, name, address, phoneNumber,
+                        isPhDHolder, isMasterHolder, annualSalary, hasAdditionalDuty);
                 employees.add(newEmployee);
                 break;
             case 2:
@@ -174,15 +162,14 @@ public class EmployeeSalarySystem {
                 employees.add(newEmployee);
                 break;
             case 3:
-                // TODO: ADD PART TIME TUTOR
                 name = promptName();
                 address = promptAddress();
                 phoneNumber = promptPhoneNumber();
                 isPhDHolder = promptIsPhDHolder();
                 isMasterHolder = promptIsMasterHolder();
-                monthlySalary = promptMonthlySalary();
                 hourlyRate = promptHourlyRate();
-                newEmployee = new PartTimeTutor(staffCounter++, name, address, phoneNumber, isPhDHolder, isMasterHolder, monthlySalary, hourlyRate);
+                newEmployee = new PartTimeTutor(staffCounter++, name, address, phoneNumber,
+                        isPhDHolder, isMasterHolder, hourlyRate);
                 employees.add(newEmployee);
                 break;
             default:
@@ -190,6 +177,18 @@ public class EmployeeSalarySystem {
                 exit(1);
         }
         System.out.println("new employee added successfully");
+    }
+
+    private boolean promptHasAdditionalDuty() {
+        String input = "";
+        do {
+            System.out.println("Does the admin have an additional duty position? (yes/no):");
+            input = scanner.next().trim().toLowerCase();
+            if (!input.equals("yes") && !input.equals("no")) {
+                System.out.println("Invalid entry: Please enter 'yes' or 'no'.");
+            }
+        } while (!input.equals("yes") && !input.equals("no"));
+        return input.equals("yes");
     }
 
     private void recordMonthlyHoursForPartTimeTutor() {
@@ -214,7 +213,6 @@ public class EmployeeSalarySystem {
         }
 
         PartTimeTutor partTimeTutor = (PartTimeTutor) foundEmployee;
-
         int year = promptYear();
         int month = promptMonth();
         double hoursWorked = promptHoursWorked();
@@ -381,25 +379,6 @@ public class EmployeeSalarySystem {
             }
         } while (!valid);
         return annualSalary;
-    }
-
-    private double promptMonthlySalary() {
-        double monthlySalary = 0;
-        boolean valid = false;
-        do {
-            System.out.println("Enter employee monthly salary:");
-            try {
-                monthlySalary = Double.parseDouble(scanner.next());
-                if (monthlySalary <= 0) {
-                    System.out.println("Invalid entry: Monthly salary must be greater than 0.");
-                } else {
-                    valid = true;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid entry: Monthly salary must be a valid number.");
-            }
-        } while (!valid);
-        return monthlySalary;
     }
 
     private double promptHourlyRate() {
