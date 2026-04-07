@@ -17,17 +17,14 @@ public class EmployeeSalarySystem {
         int getUserChoice = mainMenu();
 
         switch (getUserChoice) {
-            //TODO 1. Add Employee to the system
             case 1:
                 addEmployeeToTheSystem();
                 break;
-            //TODO 2. Record monthly hours for part time tutor
             case 2:
                 recordMonthlyHoursForPartTimeTutor();
                 break;
-            //TODO 3. Print monthly salary report
             case 3:
-//                printMonthlySalaryReport();
+                printMonthlySalaryReport();
                 break;
             //TODO 4. Print part time tutor monthly salary history
             case 4:
@@ -36,6 +33,45 @@ public class EmployeeSalarySystem {
             //TODO 5. Exit
             default:
                 exit(0);
+        }
+    }
+
+    private void printMonthlySalaryReport() {
+        if (employees.isEmpty()) {
+            System.out.println("No employees found in the system.");
+            return;
+        }
+
+        System.out.println("========== Monthly Salary Report ==========");
+
+        for (Employee employee : employees) {
+            double monthlySalary = calculateMonthlySalary(employee);
+
+            System.out.println("-------------------------------------------");
+            System.out.println("ID:             " + employee.getStaffId());
+            System.out.println("Name:           " + employee.getName());
+            System.out.println("Address:        " + employee.getAddress());
+            System.out.println("Phone:          " + employee.getPhoneNumber());
+            System.out.printf ("Monthly Salary: %.2f%n", monthlySalary);
+        }
+
+        System.out.println("===========================================");
+    }
+
+    private double calculateMonthlySalary(Employee employee) {
+        if (employee instanceof Admin admin) {
+            double baseMonthly = admin.getAnnualSalary() / 12;
+            return baseMonthly + (baseMonthly * admin.getExtraSalary()) + (baseMonthly * admin.getADMIN_BOUNCE());
+
+        } else if (employee instanceof SalariedTutor salariedTutor) {
+            double baseMonthly = salariedTutor.getAnnualSalary() / 12;
+            return baseMonthly + (baseMonthly * salariedTutor.getExtraSalary());
+
+        } else if (employee instanceof PartTimeTutor partTimeTutor) {
+            return partTimeTutor.getMonthlySalary() + (partTimeTutor.getMonthlySalary() * partTimeTutor.getExtraSalary());
+
+        } else {
+            return 0;
         }
     }
 

@@ -1,3 +1,4 @@
+import lombok.Data;
 import lombok.NonNull;
 
 public class Admin extends FullTimeTutor {
@@ -5,5 +6,9 @@ public class Admin extends FullTimeTutor {
 
     public Admin(long staffId, String name, String address, int phoneNumber, boolean isPhDHolder, boolean isMasterHolder, double annualSalary) {
         super(staffId, name, address, phoneNumber, isPhDHolder, isMasterHolder, annualSalary);
+    }
+
+    public double getADMIN_BOUNCE() {
+        return ADMIN_BOUNCE;
     }
 }
