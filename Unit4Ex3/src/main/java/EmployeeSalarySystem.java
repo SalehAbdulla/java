@@ -36,6 +36,50 @@ public class EmployeeSalarySystem {
         }
     }
 
+    private void printPartTimeTutorMonthlySalaryHistory() {
+        long employeeId = promptEmployeeId();
+
+        Employee foundEmployee = null;
+        for (Employee employee : employees) {
+            if (employee.getStaffId() == employeeId) {
+                foundEmployee = employee;
+                break;
+            }
+        }
+
+        if (foundEmployee == null) {
+            System.out.println("No employee found with ID: " + employeeId);
+            return;
+        }
+
+        if (!(foundEmployee instanceof PartTimeTutor partTimeTutor)) {
+            System.out.println("Employee with ID " + employeeId + " is not a Part Time Tutor.");
+            return;
+        }
+
+        System.out.println("========== Part Time Tutor Salary History ==========");
+        System.out.println("ID:   " + partTimeTutor.getStaffId());
+        System.out.println("Name: " + partTimeTutor.getName());
+
+        if (partTimeTutor.getNumberOfHoursList().isEmpty()) {
+            System.out.println("No monthly records found for this tutor.");
+            return;
+        }
+
+        for (PartTimeRecord record : partTimeTutor.getNumberOfHoursList()) {
+            double monthlySalary = partTimeTutor.getMonthlySalary()
+                    + (partTimeTutor.getMonthlySalary() * partTimeTutor.getExtraSalary())
+                    + (record.getNumberOfHoursWorkedAMonth() * partTimeTutor.getHourlyRate());
+
+            System.out.println("---------------------------------------------------");
+            System.out.println("Year:           " + record.getYear());
+            System.out.println("Month:          " + record.getMonth());
+            System.out.printf ("Hours Worked:   %.2f%n", record.getNumberOfHoursWorkedAMonth());
+            System.out.printf ("Monthly Salary: %.2f%n", monthlySalary);
+        }
+
+        System.out.println("====================================================");
+    }
     private void printMonthlySalaryReport() {
         if (employees.isEmpty()) {
             System.out.println("No employees found in the system.");
