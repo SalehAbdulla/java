@@ -3,6 +3,7 @@ package com.ecommerce.project.service;
 import com.ecommerce.project.exceptions.ApiException;
 import com.ecommerce.project.exceptions.ResourceNotFoundException;
 import com.ecommerce.project.model.Category;
+import com.ecommerce.project.payload.CategoryResponse;
 import com.ecommerce.project.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> getCategories(){
+    public CategoryResponse getCategories(){
         List<Category> getAllCategories = categoryRepository.findAll();
         if (getAllCategories.isEmpty()) {
             throw new ApiException("categories list is empty!");
