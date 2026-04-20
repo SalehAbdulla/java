@@ -26,6 +26,12 @@ public class CategoryController {
         this.categoryServiceImpl = categoryServiceImpl;
     }
 
+
+    @GetMapping("/echo")
+    public ResponseEntity<String> echoMessage(@RequestParam("message") String message){
+        return new ResponseEntity<>("Echoed Message is: " + message, HttpStatus.OK);
+    }
+
     @GetMapping("/public/categories")
     public ResponseEntity<CategoryResponse> getCategories() {
         CategoryResponse categories = categoryServiceImpl.getCategories();
@@ -39,8 +45,8 @@ public class CategoryController {
 
     @DeleteMapping("/admin/delete-category/{categoryId}")
     public ResponseEntity<CategoryDTO> deleteCategory(@PathVariable long categoryId){
-        CategoryDTO categoryDTO = categoryServiceImpl.deleteCategory(categoryId);
-        return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
+        CategoryDTO deletedCategoryDTO = categoryServiceImpl.deleteCategory(categoryId);
+        return new ResponseEntity<>(deletedCategoryDTO, HttpStatus.OK);
     }
 
     @PutMapping("/admin/update-category/{categoryId}")
