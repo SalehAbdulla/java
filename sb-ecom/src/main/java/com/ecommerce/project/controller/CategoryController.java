@@ -25,16 +25,18 @@ public class CategoryController {
     public CategoryController(CategoryServiceImpl categoryServiceImpl){
         this.categoryServiceImpl = categoryServiceImpl;
     }
-
-
-    @GetMapping("/echo")
-    public ResponseEntity<String> echoMessage(@RequestParam("message") String message){
-        return new ResponseEntity<>("Echoed Message is: " + message, HttpStatus.OK);
-    }
+    // This is just an example of how we can get the values from the params
+//    @GetMapping("/echo")
+//    public ResponseEntity<String> echoMessage(@RequestParam(value = "message", defaultValue = "default message") String message){
+//        return new ResponseEntity<>("Echoed Message is: " + message, HttpStatus.OK);
+//    }
 
     @GetMapping("/public/categories")
-    public ResponseEntity<CategoryResponse> getCategories() {
-        CategoryResponse categories = categoryServiceImpl.getCategories();
+    public ResponseEntity<CategoryResponse> getCategories(
+            @RequestParam(name = "pageNumber") Integer pageNumber,
+            @RequestParam(name = "pageSize") Integer pageSize
+            ) {
+        CategoryResponse categories = categoryServiceImpl.getCategories(pageNumber, pageSize);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 

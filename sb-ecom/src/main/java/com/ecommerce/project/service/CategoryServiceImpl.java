@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
     private ModelMapper modelMapper;
 
     @Override
-    public CategoryResponse getCategories(){
+    public CategoryResponse getCategories(Integer pageNumber, Integer pageSize){
         List<Category> getAllCategories = categoryRepository.findAll();
         if (getAllCategories.isEmpty()) {throw new ApiException("categories list is empty!");}
 
