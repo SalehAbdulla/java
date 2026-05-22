@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Example1UsingBorderLayout extends JFrame {
 
-    // panal
+    // Panal
     private JPanel jPnl;
     // welcome to java field
     private JTextField jTxtField;
