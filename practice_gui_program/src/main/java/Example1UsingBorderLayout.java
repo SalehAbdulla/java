@@ -1,4 +1,7 @@
+import org.w3c.dom.ls.LSOutput;
+
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 
 public class Example1UsingBorderLayout extends JFrame {
@@ -32,8 +35,54 @@ public class Example1UsingBorderLayout extends JFrame {
         }
 
         jPnl.add(btnsPanal, BorderLayout.SOUTH);
+
+
+        // JCheckBox
+        JCheckBox jCheckBox = new JCheckBox("is Employee?");
+        jPnl.add(jCheckBox, BorderLayout.CENTER);
+
+        jCheckBox.addActionListener(e -> {
+            if (jCheckBox.isSelected()) {
+                System.out.println("Selected!");
+            }
+        });
+
+
+
+        // JRadioButtons with ButtonGroup
+        JPanel radioButtonsPnl = new JPanel();
+        radioButtonsPnl.setLayout(new FlowLayout());
+
+        ButtonGroup rbGroup = new ButtonGroup();
+        JRadioButton rbMale = new JRadioButton("Male");
+        JRadioButton rbFemale = new JRadioButton("Female");
+
+        rbGroup.add(rbMale);
+        rbGroup.add(rbFemale);
+
+        radioButtonsPnl.add(rbMale);
+        radioButtonsPnl.add(rbFemale);
+
+        jPnl.add(radioButtonsPnl, BorderLayout.WEST);
+
+
+
+        JComboBox jComboBox = new JComboBox();
+        jComboBox.addItem("Red");
+        jComboBox.addItem("Blue");
+        jComboBox.addItem("Green");
+        jComboBox.addItem("White");
+
+        jPnl.add(jComboBox, BorderLayout.EAST);
+
+
+
+
+
+
+
         add(jPnl);
-        setSize(300, 400);
+        setSize(800, 400);
         setVisible(true);
     }
 
