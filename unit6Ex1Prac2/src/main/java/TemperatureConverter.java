@@ -65,7 +65,7 @@ public class TemperatureConverter extends JFrame {
         leftPanel.add(row3);
 
         // Right panel: Thermometer image
-        JLabel thermometer = new JLabel(new ImageIcon("thermometer.png"));
+        JLabel thermometer = new JLabel(new ImageIcon("./resources/thermometer.png"));
         thermometer.setPreferredSize(new Dimension(150, 300));
         thermometer.setHorizontalAlignment(SwingConstants.CENTER);
 
