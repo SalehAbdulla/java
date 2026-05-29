@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
 public class Car {
+    private String brand;
+    private String color;
+
 }
