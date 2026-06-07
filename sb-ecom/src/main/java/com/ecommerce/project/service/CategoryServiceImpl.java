@@ -26,6 +26,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private ModelMapper modelMapper;
 
+
+    public void printSomething(){
+        
+    }
+
+
     @Override
     public CategoryResponse getCategories(Integer pageNumber, Integer pageSize){
         List<Category> getAllCategories = categoryRepository.findAll();

@@ -15,6 +15,7 @@ public class ReadInfoSerialize extends JFrame implements ActionListener {
 
     Serializer serializer;
 
+
     // Components | left side
     JLabel EmployeeInfoLbl = UIComponents.createHeader("Employee Information");
 

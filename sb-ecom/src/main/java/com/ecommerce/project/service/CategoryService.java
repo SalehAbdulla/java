@@ -11,4 +11,5 @@ public interface CategoryService {
     CategoryDTO deleteCategory(long categoryId);
     CategoryResponse getCategories(Integer pageNumber, Integer pageSize);
     CategoryDTO updateCategory(long categoryId, CategoryDTO categoryDTO);
+    void printSomething();
 }
