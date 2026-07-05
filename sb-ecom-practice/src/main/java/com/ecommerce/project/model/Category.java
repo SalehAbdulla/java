@@ -18,6 +18,6 @@ public class Category {
     private Long categoryId;
     @NotBlank
     @NotNull
-    @Size(min = 3, max = 10, message = "category name size must be (Min 3, Max 10)")
+    @Size(min = 3, max = 30, message = "category name size must be (Min 3, Max 30)")
     private String categoryName;
 }
