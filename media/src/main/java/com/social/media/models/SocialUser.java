@@ -2,9 +2,7 @@ package com.social.media.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,18 +16,24 @@ import java.util.Set;
 public class SocialUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long socialUserId;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "user")
     private SocialProfile socialProfile;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "socialUser")
     private List<SocialPost> posts = new ArrayList<>();
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToMany
     @JoinTable(
-            name = "user_group",
-            joinColumns = @JoinColumn(name = "user_id"),
+            name = "user_groups",
+            joinColumns = @JoinColumn(name = "social_user_id"),
             inverseJoinColumns = @JoinColumn(name = "social_group_id")
     )
     private Set<SocialGroup> groups = new HashSet<>();
