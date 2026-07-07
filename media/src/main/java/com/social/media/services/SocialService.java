@@ -1,7 +1,6 @@
 package com.social.media.services;
 
 import com.social.media.models.SocialUser;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

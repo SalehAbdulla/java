@@ -10,7 +10,6 @@ import com.social.media.repositories.SocialProfileRepository;
 import com.social.media.repositories.SocialUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,21 +34,30 @@ public class DataInitializer {
             userRepository.save(user2);
             userRepository.save(user3);
 
+            // Create groups
             SocialGroup group1 = new SocialGroup();
             SocialGroup group2 = new SocialGroup();
 
             groupRepository.save(group1);
             groupRepository.save(group2);
+            // add from group side
+            group1.getSocialUsers().add(user1);
+            group1.getSocialUsers().add(user2);
 
+            // add from user side
             user1.getGroups().add(group1);
             user2.getGroups().add(group1);
 
+            group2.getSocialUsers().add(user1);
+            group2.getSocialUsers().add(user3);
+            
             user1.getGroups().add(group2);
             user3.getGroups().add(group2);
 
             userRepository.save(user1);
             userRepository.save(user2);
             userRepository.save(user3);
+
 
             // Create posts
             SocialPost socialPost1 = new SocialPost();

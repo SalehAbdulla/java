@@ -22,5 +22,4 @@ public class SocialPost {
     @ManyToOne
     @JoinColumn(name = "social_user_id")
     private SocialUser socialUser;
-
 }
