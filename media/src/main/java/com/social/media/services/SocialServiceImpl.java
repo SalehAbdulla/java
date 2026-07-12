@@ -22,4 +22,12 @@ public class SocialServiceImpl implements SocialService {
     public SocialUser saveUser(SocialUser socialUser) {
         return socialUserRepository.save(socialUser);
     }
+
+    @Override
+    public SocialUser deleteUser(Long socialUserId) {
+        SocialUser socialUser = socialUserRepository.findById(socialUserId)
+        .orElseThrow(() -> new RuntimeException("user not found"));
+        socialUserRepository.delete(socialUser);
+        return socialUser;
+    }
 }

@@ -1,6 +1,8 @@
 package com.social.media.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,5 +19,6 @@ public class SocialProfile {
     @EqualsAndHashCode.Exclude
     @OneToOne
     @JoinColumn(name = "social_user_id")
+    @JsonIgnore
     private SocialUser user;
 }

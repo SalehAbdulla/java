@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Getter
@@ -23,14 +22,12 @@ public class SocialUser {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToOne(mappedBy = "user")
-    @JsonIgnore
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private SocialProfile socialProfile;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "socialUser")
-    @JsonIgnore
     private List<SocialPost> posts = new ArrayList<>();
 
     @ToString.Exclude
@@ -41,7 +38,6 @@ public class SocialUser {
             joinColumns = @JoinColumn(name = "social_user_id"),
             inverseJoinColumns = @JoinColumn(name = "social_group_id")
     )
-    @JsonIgnore
     private Set<SocialGroup> groups = new HashSet<>();
 
     @Override

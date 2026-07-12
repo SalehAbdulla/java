@@ -1,5 +1,6 @@
 package com.social.media.models;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -23,5 +24,6 @@ public class SocialPost {
     @EqualsAndHashCode.Exclude
     @ManyToOne
     @JoinColumn(name = "social_user_id")
+    @JsonIgnore
     private SocialUser socialUser;
 }

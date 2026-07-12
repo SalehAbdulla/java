@@ -13,6 +13,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Getter
 @Setter
 @Entity
@@ -21,10 +22,10 @@ public class SocialGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long socialGroupId;
 
-    @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "groups")
+    @JsonIgnore
     private Set<SocialUser> socialUsers = new HashSet<>();
 
     @Override
