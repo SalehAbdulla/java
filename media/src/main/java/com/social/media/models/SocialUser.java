@@ -1,48 +1,36 @@
 package com.social.media.models;
 
 import jakarta.persistence.*;
-import lombok.*;
-import java.util.Objects;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class SocialUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long socialUserId;
+    private Long id;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "socialUser") // its mappedBy, means do not show it in JPA DB
     private SocialProfile socialProfile;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "socialUser")
-    private List<SocialPost> posts = new ArrayList<>();
+    @OneToMany(mappedBy = "socialUser") // its mappedBy again, do not show it
+    private Set<SocialPost> posts = new HashSet<>();
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     @ManyToMany
+    // JoinTable annotation to change the names, cus its join table right.
     @JoinTable(
             name = "user_groups",
-            joinColumns = @JoinColumn(name = "social_user_id"),
-            inverseJoinColumns = @JoinColumn(name = "social_group_id")
+            joinColumns =  @JoinColumn(name = "user_id"),
+            inverseJoinColumns   = @JoinColumn(name = "group_id")
     )
-    private Set<SocialGroup> groups = new HashSet<>();
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(socialUserId);
-    }
+    private Set<SocialGroup> groups = new HashSet<>();
 
 }

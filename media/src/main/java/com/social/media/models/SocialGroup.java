@@ -1,35 +1,24 @@
 package com.social.media.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-@Getter
-@Setter
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SocialGroup {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long socialGroupId;
+    private Long id;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "groups")
-    @JsonIgnore
-    private Set<SocialUser> socialUsers = new HashSet<>();
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(socialGroupId);
-    }
+    @ManyToMany(mappedBy = "groups") // its mappedBy again, do not show it
+    private Set<SocialUser> users = new HashSet<>();
 }
