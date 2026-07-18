@@ -1,11 +1,13 @@
 package com.social.media.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -30,7 +32,10 @@ public class SocialUser {
             joinColumns =  @JoinColumn(name = "user_id"),
             inverseJoinColumns   = @JoinColumn(name = "group_id")
     )
-
     private Set<SocialGroup> groups = new HashSet<>();
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
