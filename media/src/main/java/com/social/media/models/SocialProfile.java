@@ -19,4 +19,6 @@ public class SocialProfile {
     @JoinColumn(name = "social_user_id") // Change the column name
     @JsonIgnore
     private SocialUser socialUser;
+
+    private String description;
 }

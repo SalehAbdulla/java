@@ -19,4 +19,8 @@ public class SocialService {
         return socialUserRepository.findAll();
     }
 
+    public SocialUser saveSocialUser(SocialUser socialUser){
+        return socialUserRepository.save(socialUser);
+    }
+
 }
